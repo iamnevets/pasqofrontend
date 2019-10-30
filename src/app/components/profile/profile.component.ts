@@ -1,4 +1,10 @@
-import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+import { User } from 'src/app/models/user';
+import {
+  FormBuilder,
+  FormGroup,
+  FormControl,
+  Validators
+} from '@angular/forms';
 import { UserService } from './../user/user.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
@@ -12,6 +18,7 @@ import Swal from 'sweetalert2';
 export class ProfileComponent implements OnInit {
   accountInfoForm: FormGroup;
   changePasswordForm: FormGroup;
+  user: User = JSON.parse(localStorage.getItem('user'));
 
   constructor(
     private router: Router,
@@ -20,8 +27,7 @@ export class ProfileComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    const user = JSON.parse(localStorage.getItem('user'));
-    const id = user.Id;
+    const id = this.user.Id;
     console.log(id);
 
     this.accountInfoFormPatch(id);
@@ -36,7 +42,15 @@ export class ProfileComponent implements OnInit {
       Name: this.formBuilder.control('', Validators.required),
       UserName: this.formBuilder.control('', Validators.required),
       Email: this.formBuilder.control('', Validators.required),
-      PhoneNumber: this.formBuilder.control('', Validators.required)
+      PhoneNumber: this.formBuilder.control('', Validators.required),
+      SchoolId: this.formBuilder.control(
+        this.user.SchoolId,
+        Validators.required
+      ),
+      UserRoleId: this.formBuilder.control(
+        this.user.UserRoleId,
+        Validators.required
+      )
     });
   }
 
@@ -57,7 +71,7 @@ export class ProfileComponent implements OnInit {
   }
 
   updateAccount() {
-    const data = this.accountInfoForm.value;
+    const data: User = this.accountInfoForm.value;
     this.userService.createOrUpdateUser(data).subscribe(response => {
       if (response.Success) {
         Swal.fire({
@@ -93,7 +107,9 @@ export class ProfileComponent implements OnInit {
       } else {
         Swal.fire({
           title: 'Failed',
-          text: response.Message,
+          text: response.Message.includes('Incorrect')
+            ? 'Old password is incorrect'
+            : response.Message,
           type: 'error',
           showConfirmButton: true,
           confirmButtonColor: '#40844e'
@@ -101,5 +117,4 @@ export class ProfileComponent implements OnInit {
       }
     });
   }
-
 }

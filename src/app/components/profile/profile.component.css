@@ -1,0 +1,51 @@
+form div input {
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    padding-left: 0;
+}
+form div label {
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+.account-info-form-container {
+    display: inline-block;
+    /* border: 1px solid black; */
+    width: 45%;
+    margin-left: 5%;
+    padding: 0;
+}
+.change-password-form-container {
+    display: inline-block;
+    /* border: 1px solid black; */
+    width: 45%;
+    padding: 0;
+}
+
+.account-info-form {
+    width: 100%;
+    /* margin-left: 4%; */
+    border-left: none;
+    border-top: none;
+    border-bottom: none;
+}
+.account-info-header {
+    width: 100%;
+    padding-left: 60px;
+    border-bottom: none;
+    background-color: #fff;
+}
+
+.change-password-header {
+    width: 100%;
+    padding-left: 60px;
+    border-bottom: none;
+    background-color: #fff;
+}
+.change-password-form {
+    width: 100%;
+    border-right: none;
+    border-top: none;
+    border-bottom: none;
+}

@@ -1,0 +1,143 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* .layouts {
+    border: 1px solid black;
+} */
+
+.main-content {
+    margin-left: 200px;
+    height: 95vh;
+    width: 89.3%;
+    position: fixed;
+    overflow-y: auto;
+    /* border: 1px black solid; */
+    background-color: #fff;
+}
+
+
+/* Table Styles */
+.main-table-container {
+    width: 100%;
+    height: 100%;
+    margin-bottom: 50px;
+}
+
+.my-table-container {
+    width: 85%;
+    margin-left: 7.5%;
+    margin-bottom: 40px;
+    padding-top: 20px;
+    background-color: #fff;
+}
+
+.table-title {
+    display: inline;
+}
+.create-new {
+    float: right;
+    background-color: #9e4f8f;
+    color: white;
+    font-size: 1.3rem;
+    font-weight: bold;
+    padding: 15px 50px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: 0.2s ease-in;
+}
+.create-new:hover {
+    background-color: #7c3d70;
+    transition: 0.2s ease-out;
+}
+.search-by {
+    height: 50px;
+    font-size: 1.3rem;
+    font-weight: 400;
+    font-style: italic;
+    padding: 0 10px;
+}
+.empty-search {
+    display: block;
+    width: 40%;
+    margin: auto;
+    margin-top: 50px;
+    font-size: 1.4rem;
+    font-weight: 400;
+    font-style: italic;
+    text-align: center;
+    color: #676767;
+    /* border: 1px black solid; */
+}
+
+.main-content .my-table-container table {
+    width: 100%;
+    margin: auto;
+    background-color: #fff;
+    color: #575153;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+.my-table-container table tbody {
+    color: #676767;
+}
+.my-thead {
+    background-color: #fff;
+    font-size: 1.3rem;
+}
+
+.actions {
+    text-align: center;
+}
+.actions fa-icon {
+    cursor: pointer;
+}
+.mid-icon {
+    padding: 0 10px 0 15px;
+}
+.last-icon {
+    color: #cc1a3b;
+}
+
+.pagination-controls /deep/ .ngx-pagination .current {
+    background-color: #40844e;
+}
+
+
+/* Form Styles */
+
+.main-form-container {
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+}
+
+.form-container {
+    width: 45%;
+    margin: auto;
+    margin-bottom: 100px;
+    background-color: white;
+    padding: 30px 60px 50px 60px;
+    border: 1px solid #e1e1e1;
+    border-top: 0px;
+}
+form div input {
+    background-color: #e8f0fe;
+}
+form div label {
+    color: #676767;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.header {
+    z-index: 1;
+    background-color: #f5f5f5;
+    border-bottom: 1px solid #e1e1e1;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 700;
+    color: #333333;
+    width: 45%;
+    height: 50px;
+    margin: auto;
+    margin-top: 30px;
+    padding: 10px 30px 15px 40px;
+}

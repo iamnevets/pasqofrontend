@@ -1,0 +1,57 @@
+<div id="viewport" *ngIf="isLoggedIn()">
+  <!-- Sidebar -->
+  <div id="sidebar" class="shadow-lg">
+    <header>
+      <a href="#">PASQO</a>
+    </header>
+    <br><br>
+    <div>
+
+      <ul>
+        <a routerLink="dashboard" id="nav-link">
+          <fa-icon [icon]="faHome" [fixedWidth]="true"></fa-icon>
+          <li>DASHBOARD</li>
+        </a>
+        <a href="#" id="nav-link">
+          <fa-icon [icon]="faFileAlt" [fixedWidth]="true"></fa-icon>
+          <li>EXAMS</li>
+        </a>
+        <a routerLink="courses" id="nav-link">
+          <fa-icon [icon]="faBookReader" [fixedWidth]="true"></fa-icon>
+          <li>COURSES</li>
+        </a>
+        <a routerLink="programmes" id="nav-link">
+          <fa-icon [icon]="faGraduationCap" [fixedWidth]="true"></fa-icon>
+          <li>PROGRAMMES</li>
+        </a>
+        <a routerLink="schools" id="nav-link">
+          <fa-icon [icon]="faSchool" [fixedWidth]="true"></fa-icon>
+          <li>SCHOOLS</li>
+        </a>
+        <a routerLink="users" id="nav-link">
+          <fa-icon [icon]="faUsers" [fixedWidth]="true"></fa-icon>
+          <li>USERS</li>
+        </a>
+        <a routerLink="profile" id="nav-link">
+          <fa-icon [icon]="faUser" [fixedWidth]="true"></fa-icon>
+          <li>PROFILE</li>
+        </a>
+        <br>
+        <br>
+        <a (click)="logout()" id="nav-link" style="cursor: pointer;">
+          <fa-icon [icon]="faSignOutAlt" [rotate]="180" [fixedWidth]="true" style="color: #f2395a; font-size: 1.1em;">
+          </fa-icon>
+          <li style="font-size: 1.2em; font-weight: 700;">LOGOUT</li>
+        </a>
+
+      </ul>
+
+    </div>
+  </div>
+
+  <div class="title-bar">
+    {{route}}
+  </div>
+
+</div>
+<router-outlet></router-outlet>

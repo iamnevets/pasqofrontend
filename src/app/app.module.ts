@@ -22,6 +22,8 @@ import { ProgrammeFormComponent } from './components/programme/programme-form/pr
 import { CourseComponent } from './components/course/course.component';
 import { CourseFormComponent } from './components/course/course-form/course-form.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { ExamComponent } from './components/exam/exam.component';
+import { ExamFormComponent } from './components/exam/exam-form/exam-form.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import { ProfileComponent } from './components/profile/profile.component';
     ProgrammeFormComponent,
     CourseComponent,
     CourseFormComponent,
-    ProfileComponent
+    ProfileComponent,
+    ExamComponent,
+    ExamFormComponent
   ],
   imports: [
     BrowserModule,

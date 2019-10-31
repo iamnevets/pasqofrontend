@@ -1,3 +1,5 @@
+import { ExamFormComponent } from './components/exam/exam-form/exam-form.component';
+import { ExamComponent } from './components/exam/exam.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { CourseFormComponent } from './components/course/course-form/course-form.component';
 import { CourseComponent } from './components/course/course.component';
@@ -29,6 +31,9 @@ const routes: Routes = [
   { path: 'courseform', component: CourseFormComponent, canActivate: [AuthGuardService]},
   { path: 'courseform/:id', component: CourseFormComponent, canActivate: [AuthGuardService]},
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuardService]},
+  { path: 'exams', component: ExamComponent, canActivate: [AuthGuardService]},
+  { path: 'examform', component: ExamFormComponent, canActivate: [AuthGuardService]},
+  { path: 'examform/:id', component: ExamFormComponent, canActivate: [AuthGuardService]},
 
 
   { path: '', redirectTo: 'dashboard', pathMatch: 'full'}

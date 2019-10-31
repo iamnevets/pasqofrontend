@@ -23,8 +23,8 @@
 }
 
 .my-table-container {
-    width: 85%;
-    margin-left: 7.5%;
+    width: 90%;
+    margin-left: 5.7%;
     margin-bottom: 40px;
     padding-top: 20px;
     background-color: #fff;
@@ -140,4 +140,24 @@ form div label {
     margin: auto;
     margin-top: 30px;
     padding: 10px 30px 15px 40px;
+}
+
+.btn-cancel {
+    background-color: #cc1a3b !important;
+    color: #fff !important;
+    font-size: 1.2rem !important;
+    font-weight: 600 !important;
+    margin-right: 10px;
+}
+.btn-cancel:hover {
+    background-color: #b1102e !important;
+}
+.btn-save {
+    background-color: #40844e !important;
+    color: #fff !important;
+    font-size: 1.2rem !important;
+    font-weight: 600 !important;
+}
+.btn-save:hover {
+    background-color: #226b30 !important;
 }

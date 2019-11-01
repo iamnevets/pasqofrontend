@@ -69,4 +69,9 @@ export class SchoolFormComponent implements OnInit {
       }
     });
   }
+
+  cancel() {
+    this.router.navigateByUrl('schools');
+  }
+
 }

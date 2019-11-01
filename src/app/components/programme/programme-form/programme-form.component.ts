@@ -73,6 +73,10 @@ export class ProgrammeFormComponent implements OnInit {
     });
   }
 
+  cancel() {
+    this.router.navigateByUrl('programmes');
+  }
+
   getAllSchools() {
     this.schoolService.getSchools().subscribe(response => {
       if (response.Success) {

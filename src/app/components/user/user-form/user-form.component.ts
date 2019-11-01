@@ -85,6 +85,10 @@ export class UserFormComponent implements OnInit {
     });
   }
 
+  cancel() {
+    this.router.navigateByUrl('users');
+  }
+
   getRoles() {
     this.userService.getRoles().subscribe( response => {
       if ( response.Success) {

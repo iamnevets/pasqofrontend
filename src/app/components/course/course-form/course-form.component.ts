@@ -73,6 +73,10 @@ export class CourseFormComponent implements OnInit {
     });
   }
 
+  cancel() {
+    this.router.navigateByUrl('courses');
+  }
+
   getAllProgrammes() {
     this.programmeService.getAllProgrammes().subscribe(response => {
       if (response.Success) {

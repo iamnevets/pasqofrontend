@@ -24,6 +24,8 @@ import { CourseFormComponent } from './components/course/course-form/course-form
 import { ProfileComponent } from './components/profile/profile.component';
 import { ExamComponent } from './components/exam/exam.component';
 import { ExamFormComponent } from './components/exam/exam-form/exam-form.component';
+import { QuestionFormComponent} from './components/question/question-form/question-form.component';
+import { ExamViewComponent } from './components/exam/exam-view/exam-view.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,9 @@ import { ExamFormComponent } from './components/exam/exam-form/exam-form.compone
     CourseFormComponent,
     ProfileComponent,
     ExamComponent,
-    ExamFormComponent
+    ExamFormComponent,
+    QuestionFormComponent,
+    ExamViewComponent
   ],
   imports: [
     BrowserModule,

@@ -2,7 +2,6 @@ import { Exam } from './exam';
 
 export interface Question {
     Id: number;
-    Number: number;
     QuestionText: string;
     ExamId: number;
     Exam: Exam;

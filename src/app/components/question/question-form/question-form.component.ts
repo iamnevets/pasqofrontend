@@ -2,7 +2,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { QuestionService } from '../question.service';
 import { ExamService } from '../../exam/exam.service';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { Exam } from 'src/app/models/exam';
 import { Question } from 'src/app/models/question';
 import Swal from 'sweetalert2';
@@ -14,7 +14,7 @@ import Swal from 'sweetalert2';
 })
 export class QuestionFormComponent implements OnInit {
   exams: Exam[];
-  examId = 0;
+  examId: number;
   examTitle: string;
   formGroup: FormGroup;
 
@@ -38,10 +38,9 @@ export class QuestionFormComponent implements OnInit {
 
   questionForm() {
     this.formGroup = this.formBuilder.group({
-      Id: this.formBuilder.control(null),
-      Number: this.formBuilder.control('', Validators.required),
+      Id: new FormControl(),
       QuestionText: this.formBuilder.control('', Validators.required),
-      ExamId: this.formBuilder.control(this.examId, Validators.required),
+      ExamId: this.formBuilder.control('', Validators.required),
       Answer1: this.formBuilder.control('', Validators.required),
       Answer2: this.formBuilder.control('', Validators.required),
       Answer3: this.formBuilder.control('', Validators.required),
@@ -58,7 +57,7 @@ export class QuestionFormComponent implements OnInit {
     this.questionService.createOrUpdate(data).subscribe(response => {
       if (response.Success) {
         this.router.navigateByUrl('questionform');
-        window.location.reload();
+        // window.location.reload();
 
         Swal.fire({
           title: 'Successful',

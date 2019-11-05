@@ -1,4 +1,4 @@
-import { Router } from '@angular/router';
+import { Event, NavigationStart, NavigationEnd, NavigationError, Router, ActivatedRoute } from '@angular/router';
 import { LoginService } from './components/login/login.service';
 import {
   faFileAlt,
@@ -11,9 +11,11 @@ import {
   faSignOutAlt
 } from '@fortawesome/free-solid-svg-icons';
 import { Component, OnInit } from '@angular/core';
-import { from } from 'rxjs';
+import { Observable } from 'rxjs';
+import {map} from 'rxjs/operators';
 import Swal from 'sweetalert2';
 import { getCurrencySymbol } from '@angular/common';
+import { stringify } from '@angular/compiler/src/util';
 
 @Component({
   selector: 'app-root',
@@ -23,6 +25,7 @@ import { getCurrencySymbol } from '@angular/common';
 export class AppComponent implements OnInit {
   title = 'Pasqo';
   route: string;
+  currentUrl: any;
 
   faFileAlt = faFileAlt;
   faBookReader = faBookReader;
@@ -33,14 +36,11 @@ export class AppComponent implements OnInit {
   faHome = faHome;
   faSignOutAlt = faSignOutAlt;
 
-  constructor(
-    private loginService: LoginService,
-    private router: Router,
-  ) {}
+  constructor(private loginService: LoginService, private router: Router) {}
 
   ngOnInit() {
-    this.route = (window.location.pathname.replace('/', '').toUpperCase());
-    if (this.route === 'LOGIN') { this.route = 'DASHBOARD'; }
+    // this.route = (window.location.pathname.replace('/', '').toUpperCase());
+    // if (this.route === 'LOGIN') { this.route = 'DASHBOARD'; }
   }
 
   isLoggedIn() {
@@ -50,7 +50,7 @@ export class AppComponent implements OnInit {
   logout() {
     Swal.fire({
       title: 'Confirm Logout',
-      text: 'Are you sure?',
+      text: '',
       type: 'question',
       showConfirmButton: true,
       confirmButtonText: 'Yes',

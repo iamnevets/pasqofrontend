@@ -14,6 +14,8 @@ import { LoginComponent } from './components/login/login.component';
 import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { QuestionFormComponent } from './components/question/question-form/question-form.component';
+import { ExamViewComponent } from './components/exam/exam-view/exam-view.component';
 
 const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuardService] },
@@ -34,6 +36,9 @@ const routes: Routes = [
   { path: 'exams', component: ExamComponent, canActivate: [AuthGuardService]},
   { path: 'examform', component: ExamFormComponent, canActivate: [AuthGuardService]},
   { path: 'examform/:id', component: ExamFormComponent, canActivate: [AuthGuardService]},
+  { path: 'examview/:id', component: ExamViewComponent, canActivate: [AuthGuardService]},
+  { path: 'questionform', component: QuestionFormComponent, canActivate: [AuthGuardService]},
+  { path: 'questionform/:id', component: QuestionFormComponent, canActivate: [AuthGuardService]},
 
 
   { path: '', redirectTo: 'dashboard', pathMatch: 'full'}

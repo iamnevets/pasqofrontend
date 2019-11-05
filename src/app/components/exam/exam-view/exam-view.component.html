@@ -1,0 +1,39 @@
+<div class="main-content">
+
+    <button class="btn back-btn shadow-sm" (click)="back()">
+        <fa-icon [icon]="faChevronLeft" [fixedWidth]="true"></fa-icon>BACK
+    </button>
+
+    <div class="main-exam-container shadow-lg border-secondary mt-3 mb-5 pb-5">
+
+        <div class="exam-header-info">2019 Summer-break Exam</div>
+        <div class="question-and-answers mt-5 shadow-sm p-4" *ngFor="let question of questions; let i=index;">
+            <p class="question">{{i+1}}. {{question.QuestionText}}</p>
+            <fa-icon [icon]="faTrashAlt" [fixedWidth]="true" class="delete-question" (click)="delete(question.Id)"></fa-icon>
+            <fa-icon [icon]="faEdit" [fixedWidth]="true" class="edit-question" (click)="updateQuestion(question.Id)">
+            </fa-icon>
+            <br>
+            <br>
+            <div class="answers-container">
+                <label class="answer custom-radio-btn">{{question.Answer1}}
+                    <input type="radio" name={{i+1}}>
+                    <span class="circle"></span>
+                </label>
+                <label class="answer custom-radio-btn">{{question.Answer2}}
+                    <input type="radio" name={{i+1}}>
+                    <span class="circle"></span>
+                </label>
+                <label class="answer custom-radio-btn">{{question.Answer3}}
+                    <input type="radio" name={{i+1}}>
+                    <span class="circle"></span>
+                </label>
+                <label class="answer custom-radio-btn">{{question.Answer4}}
+                    <input type="radio" name={{i+1}}>
+                    <span class="circle"></span>
+                </label>
+            </div>
+        </div>
+
+    </div>
+
+</div>

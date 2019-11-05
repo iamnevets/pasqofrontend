@@ -39,16 +39,12 @@ export class ExamComponent implements OnInit {
     this.router.navigateByUrl('examform');
   }
 
-  updateExam(id: number) {
-    this.router.navigateByUrl('examform/' + id);
+  viewExam(id: number) {
+    this.router.navigateByUrl('examview/' + id);
   }
 
-  getOneExam(id: number) {
-    this.examService.getOneExam(id).subscribe(response => {
-      if (response.Success) {
-        //
-      }
-    });
+  updateExam(id: number) {
+    this.router.navigateByUrl('examform/' + id);
   }
 
   getAllExams() {

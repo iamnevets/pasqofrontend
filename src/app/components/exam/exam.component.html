@@ -58,7 +58,7 @@
                         <td> {{ exam.Course?.Name }} </td>
                         <td class="actions"> {{ exam.Year | date }} </td>
                         <td class="actions">
-                            <fa-icon [icon]="faEye" [fixedWidth]="true"></fa-icon>
+                            <fa-icon [icon]="faEye" [fixedWidth]="true" (click)="viewExam(exam.Id)"></fa-icon>
                             <fa-icon [icon]="faEdit" [fixedWidth]="true" class="mid-icon" (click)="updateExam(exam.Id)">
                             </fa-icon>
                             <fa-icon [icon]="faTrashAlt" [fixedWidth]="true" class="last-icon"
@@ -73,6 +73,11 @@
             <br>
             <pagination-controls class="pagination-controls" (pageChange)="pageNumber = $event" [autoHide]="true">
             </pagination-controls>
+            <br>
+            <span class="empty-search" *ngIf="(exams | filterBy:examFilter).length === 0">
+                No exam matches your search! <br> Did you type the right <br>
+                <b>title</b>,<b>school</b>,<b>programme</b>,<b>course</b>, or <b>year</b>???
+            </span>
 
         </div>
 

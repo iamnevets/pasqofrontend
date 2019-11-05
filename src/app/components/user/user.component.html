@@ -42,7 +42,7 @@
                     <td>{{ user.UserName }}</td>
                     <td>{{ user.School?.Name }}</td>
                     <td>{{ user.PhoneNumber }}</td>
-                    <td>@{{ user.Email }}</td>
+                    <td>{{ user.Email }}</td>
                     <td class="actions">
                         <fa-icon [icon]="faEye" [fixedWidth]="true"></fa-icon>
                         <fa-icon [icon]="faUserEdit" [fixedWidth]="true" class="mid-icon" (click)="updateUser(user.Id)">

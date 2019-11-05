@@ -1,3 +1,4 @@
+import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 import { User } from 'src/app/models/user';
 import {
   FormBuilder,
@@ -16,6 +17,8 @@ import Swal from 'sweetalert2';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
+  faChevronLeft = faChevronLeft;
+
   accountInfoForm: FormGroup;
   changePasswordForm: FormGroup;
   user: User = JSON.parse(localStorage.getItem('user'));
@@ -117,4 +120,9 @@ export class ProfileComponent implements OnInit {
       }
     });
   }
+
+  back() {
+    this.router.navigateByUrl('dashboard');
+  }
+
 }

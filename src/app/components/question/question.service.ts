@@ -21,8 +21,8 @@ export class QuestionService {
     return this.httpClient.get<ReturnObject>('api/questions/getone?id=' + id);
   }
 
-  getAllQuestions(examId: number) {
-    return this.httpClient.get<ReturnObject>('api/questions/getall?id=' + examId);
+  getAllQuestions(id: number) {
+    return this.httpClient.get<ReturnObject>('api/questions/getall?id=' + id);
   }
 
   delete(id: number) {

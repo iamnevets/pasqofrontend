@@ -65,7 +65,7 @@ export class ExamFormComponent implements OnInit {
     const data = this.formGroup.value;
     this.examService.createOrUpdate(data).subscribe(response => {
       if (response.Success) {
-        this.router.navigateByUrl('exams');
+        this.router.navigateByUrl('questionform');
 
         Swal.fire({
           title: 'Successful',

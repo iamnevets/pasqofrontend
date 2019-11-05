@@ -79,6 +79,9 @@ body {
     text-decoration: none;
     color: white;
   }
+  #nav-link:focus {
+    color: #fff;
+  }
 
   fa-icon {
     display: inline;

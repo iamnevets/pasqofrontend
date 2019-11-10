@@ -1,3 +1,4 @@
+import { HomePageComponent } from './components/home-page/home-page.component';
 import { ExamFormComponent } from './components/exam/exam-form/exam-form.component';
 import { ExamComponent } from './components/exam/exam.component';
 import { ProfileComponent } from './components/profile/profile.component';
@@ -16,9 +17,18 @@ import { Routes, RouterModule } from '@angular/router';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { QuestionFormComponent } from './components/question/question-form/question-form.component';
 import { ExamViewComponent } from './components/exam/exam-view/exam-view.component';
+import { FeaturesComponent } from './components/features/features.component';
+import { AboutUsComponent } from './components/about-us/about-us.component';
+import { ContactUsComponent } from './components/contact-us/contact-us.component';
+import { SignUpComponent } from './components/sign-up/sign-up.component';
 
 const routes: Routes = [
+  { path: 'home', component: HomePageComponent },
+  { path: 'features', component: FeaturesComponent},
+  { path: 'about', component: AboutUsComponent},
+  { path: 'contact', component: ContactUsComponent},
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuardService] },
+  { path: 'signup', component: SignUpComponent},
   { path: 'login', component: LoginComponent, canActivate: [AuthGuardService]},
   { path: 'users', component: UserComponent, canActivate: [AuthGuardService]},
   { path: 'userform', component: UserFormComponent, canActivate: [AuthGuardService]},

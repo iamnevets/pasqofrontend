@@ -1,6 +1,8 @@
 <div class="body">
 
-    <div class="title-bar">PASQO</div>
+    <div class="title-bar">
+        <span (click)="home()" style="cursor: pointer;">PASQO</span>
+    </div>
     <h3 class="header shadow-sm">Login</h3>
     <div class="form-container shadow-lg">
         <form (ngSubmit)="login()">

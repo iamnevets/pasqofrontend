@@ -1,7 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
+@import 'font-robotoslab.css';
 
 /* .layouts {
     border: 1px solid black;
+} */
+/* a {
+    cursor: pointer;
+    text-decoration: none !important;
+    color: #ffffff !important;
 } */
 
 .main-content {

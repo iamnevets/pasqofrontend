@@ -26,6 +26,11 @@ import { ExamComponent } from './components/exam/exam.component';
 import { ExamFormComponent } from './components/exam/exam-form/exam-form.component';
 import { QuestionFormComponent} from './components/question/question-form/question-form.component';
 import { ExamViewComponent } from './components/exam/exam-view/exam-view.component';
+import { HomePageComponent } from './components/home-page/home-page.component';
+import { FeaturesComponent } from './components/features/features.component';
+import { AboutUsComponent } from './components/about-us/about-us.component';
+import { ContactUsComponent } from './components/contact-us/contact-us.component';
+import { SignUpComponent } from './components/sign-up/sign-up.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +49,12 @@ import { ExamViewComponent } from './components/exam/exam-view/exam-view.compone
     ExamComponent,
     ExamFormComponent,
     QuestionFormComponent,
-    ExamViewComponent
+    ExamViewComponent,
+    HomePageComponent,
+    FeaturesComponent,
+    AboutUsComponent,
+    ContactUsComponent,
+    SignUpComponent
   ],
   imports: [
     BrowserModule,

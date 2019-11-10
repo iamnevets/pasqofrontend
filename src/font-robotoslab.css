@@ -1,0 +1,29 @@
+@font-face {
+  font-family: 'Roboto Slab';
+  font-style: normal;
+  font-weight: 100;
+  src: local('Roboto Slab Thin'), local('RobotoSlab-Thin'), url(assets/RobotoSlab/Roboto-Slab-Thin.ttf) format('truetype'), url(assets/RobotoSlab/Roboto-Slab-Thin.woff2) format('woff2'), url(assets/RobotoSlab/Roboto-Slab-Thin.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'Roboto Slab';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Roboto Slab Light'), local('RobotoSlab-Light'), url(assets/RobotoSlab/Roboto-Slab-Light.ttf) format('truetype'), url(assets/RobotoSlab/Roboto-Slab-Light.woff2) format('woff2'), url(assets/RobotoSlab/Roboto-Slab-Light.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'Roboto Slab';
+  font-style: normal;
+  font-weight: 400;
+  src: url(assets/RobotoSlab/Roboto-Slab-Regular.eot);
+  src: local('Roboto Slab Regular'), local('RobotoSlab-Regular'), local('Roboto Slab'), url(assets/RobotoSlab/Roboto-Slab-Regular.ttf) format('truetype'), url(assets/RobotoSlab/Roboto-Slab-Regular.eot?#iefix) format('embedded-opentype'), url(assets/RobotoSlab/Roboto-Slab-Regular.woff2) format('woff2'), url(assets/RobotoSlab/Roboto-Slab-Regular.woff) format('woff'), url(assets/RobotoSlab/Roboto-Slab-Regular.svg#RobotoSlab) format('svg');
+}
+
+@font-face {
+  font-family: 'Roboto Slab';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Roboto Slab Bold'), local('RobotoSlab-Bold'), url(assets/RobotoSlab/Roboto-Slab-Bold.ttf) format('truetype'), url(assets/RobotoSlab/Roboto-Slab-Bold.woff2) format('woff2'), url(assets/RobotoSlab/Roboto-Slab-Bold.woff) format('woff');
+}
+

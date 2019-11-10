@@ -3,6 +3,7 @@ import { LoginService } from './components/login/login.service';
 import {
   faFileAlt,
   faSchool,
+  faUniversity,
   faUsers,
   faBookReader,
   faUser,
@@ -16,6 +17,7 @@ import {map} from 'rxjs/operators';
 import Swal from 'sweetalert2';
 import { getCurrencySymbol } from '@angular/common';
 import { stringify } from '@angular/compiler/src/util';
+import { HomePageService } from './components/home-page/home-page.service';
 
 @Component({
   selector: 'app-root',
@@ -25,22 +27,27 @@ import { stringify } from '@angular/compiler/src/util';
 export class AppComponent implements OnInit {
   title = 'Pasqo';
   route: string;
-  currentUrl: any;
+  isHome = false;
 
   faFileAlt = faFileAlt;
   faBookReader = faBookReader;
   faGraduationCap = faGraduationCap;
   faSchool = faSchool;
+  faUniversity = faUniversity;
   faUsers = faUsers;
   faUser = faUser;
   faHome = faHome;
   faSignOutAlt = faSignOutAlt;
 
-  constructor(private loginService: LoginService, private router: Router) {}
+  constructor(private loginService: LoginService, private homePageService: HomePageService, private router: Router) {}
 
   ngOnInit() {
     // this.route = (window.location.pathname.replace('/', '').toUpperCase());
     // if (this.route === 'LOGIN') { this.route = 'DASHBOARD'; }
+  }
+
+  isHomePage() {
+    return this.homePageService.isHomePage();
   }
 
   isLoggedIn() {
@@ -61,10 +68,17 @@ export class AppComponent implements OnInit {
           if (res.Success) {
             this.loginService.loggedIn = false;
             localStorage.setItem('loggedIn', JSON.stringify(false));
-            this.router.navigateByUrl('login');
+            this.router.navigateByUrl('home');
           }
         });
       }
     });
   }
+
+  home() {
+    this.homePageService.isHome = false;
+    this.router.navigateByUrl('home');
+    location.replace('home');
+  }
+
 }

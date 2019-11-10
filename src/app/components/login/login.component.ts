@@ -72,4 +72,9 @@ export class LoginComponent implements OnInit {
       }
     });
   }
+
+  home() {
+    this.router.navigateByUrl('home');
+  }
+
 }

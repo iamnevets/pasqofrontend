@@ -36,6 +36,8 @@ export class LoginComponent implements OnInit {
       if (res.Success) {
         // console.log(res.Data.UserRole.Name);       //Use this to check if user is a student or admin
         this.router.navigateByUrl('dashboard');
+        location.reload();
+
         Swal.fire({
           title: 'Welcome',
           text: 'Successful Login',

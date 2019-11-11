@@ -46,6 +46,34 @@ export class AppComponent implements OnInit {
     // if (this.route === 'LOGIN') { this.route = 'DASHBOARD'; }
   }
 
+  myHome() {
+    this.router.navigateByUrl('home');
+  }
+
+  dashboard() {
+    this.router.navigateByUrl('dashboard');
+  }
+
+  features() {
+    this.router.navigateByUrl('features');
+  }
+
+  aboutUs() {
+    this.router.navigateByUrl('about');
+  }
+
+  contactUs() {
+    this.router.navigateByUrl('contact');
+  }
+
+  signUp() {
+    this.router.navigateByUrl('signup');
+  }
+
+  login() {
+    this.router.navigateByUrl('login');
+  }
+
   isHomePage() {
     return this.homePageService.isHomePage();
   }

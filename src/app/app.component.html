@@ -54,4 +54,33 @@
   </div>
 
 </div>
+
+<div class="title-bar-2" *ngIf="isLoggedIn() === false || isHomePage()">
+
+  <h4 class="logo">PASQO</h4>
+
+  <div class="nav-items-container">
+    <div>
+      <span (click)="myHome()" tabindex="0">
+        <fa-icon [icon]="faHome" [fixedWidth]="true"></fa-icon>
+        Home
+      </span>
+      <span (click)="dashboard()" *ngIf="isLoggedIn()" tabindex="0">Dashboard</span>
+      <span (click)="features()" tabindex="0">Features</span>
+      <span (click)="aboutUs()" tabindex="0">About Us</span>
+      <span (click)="contactUs()" tabindex="0">Contact Us</span>
+    </div>
+  </div>
+
+  <div class="call-to-action-container">
+    <button class="btn sign-up shadow-lg" *ngIf="!isLoggedIn()">SignUp</button>
+    <button class="btn login shadow-lg" (click)="login()" *ngIf="!isLoggedIn()">Login</button>
+    <button class="btn logout shadow-lg" *ngIf="isLoggedIn()" (click)="logout()">
+      <fa-icon [icon]="faSignOutAlt" [rotate]="180" [fixedWidth]="true" style="color: #f2395a; font-size: 1.1em;">
+      </fa-icon>
+      LOGOUT
+    </button>
+  </div>
+
+</div>
 <router-outlet></router-outlet>

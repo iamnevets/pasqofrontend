@@ -32,17 +32,33 @@ export class HomePageComponent implements OnInit {
 
   ngOnInit() {}
 
-  home() {
-    this.router.navigateByUrl('home');
-  }
+  // home() {
+  //   this.router.navigateByUrl('home');
+  // }
 
-  dashboard() {
-    this.router.navigateByUrl('dashboard');
-  }
+  // dashboard() {
+  //   this.router.navigateByUrl('dashboard');
+  // }
 
-  login() {
-    this.router.navigateByUrl('login');
-  }
+  // features() {
+  //   this.router.navigateByUrl('features');
+  // }
+
+  // aboutUs() {
+  //   this.router.navigateByUrl('about');
+  // }
+
+  // contactUs() {
+  //   this.router.navigateByUrl('contact');
+  // }
+
+  // signUp() {
+  //   this.router.navigateByUrl('signup');
+  // }
+
+  // login() {
+  //   this.router.navigateByUrl('login');
+  // }
 
   isLoggedIn() {
     return this.loginService.isLoggedIn();

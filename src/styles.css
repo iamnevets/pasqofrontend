@@ -167,3 +167,125 @@ form div label {
 .btn-save:hover {
     background-color: #226b30 !important;
 }
+
+
+/* Hero and footer styles */
+.main {
+    padding-top: 80px;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.hero {
+    height: 550px;
+    background-color: #40844e;
+    padding: 0 10em;
+}
+
+.welcome-info {
+    display: inline-block;
+    width: 50%;
+    height: 100%;
+    padding: 90px 0;
+    margin-right: 0px;
+    color: white;
+    /* border: 1px solid black; */
+}
+.welcome-info h1 {
+    font-family: 'Roboto Slab';
+    font-weight: 700;
+    font-size: 3.6em;
+}
+.welcome-info p {
+    font-family: Roboto;
+    font-size: 1.7em;
+    font-weight: 500;
+}
+
+.undraw-svg-img {
+    float: right;
+    height: 100%;
+    width: 50%;
+    /* margin-top: 30px; */
+    /* border: 1px solid black; */
+}
+
+.section {
+    width: 100%;
+    height: 800px;
+    padding: 150px 10em;
+    color: #575153;
+    /* border: 1px solid black; */
+}
+
+
+footer {
+    width: 100%;
+    height: 10vh;
+    color: #aaaaaa;
+    font-size: 1.2em;
+    font-weight: 500;
+    background-color: #313131;
+    border-top: dashed #5a5a5a 1px;
+}
+footer div {
+    width: 80%;
+    height: 50px;
+    margin: auto;
+    margin-top: 20px;
+    /* border: 1px solid white; */
+}
+footer div .made-by {
+    float: right;
+}
+footer div .made-by a {
+    font-weight: 700;
+    text-decoration: none;
+    font-style: italic;
+    color: #aaaaaa;
+}
+footer div .made-by a:hover {
+    color: #ffffff;
+}
+
+.footer-hero {
+    width: 100%;
+    height: 70vh;
+    padding-top: 150px;
+    padding-bottom: 450px;
+    color: #aaaaaa;
+    background-color: #313131;
+}
+.footer-hero .inner-footer-hero {
+    width: 80%;
+    height: 80%;
+    margin: auto;
+    /* border: 1px solid white; */
+}
+.footer-hero .inner-footer-hero .footer-hero-content-container {
+    display: grid;
+    grid-template-columns: 40% 45%;
+    column-gap: 15%;
+    width: 50%;
+    height: 100%;
+    margin: auto;
+    /* border: 1px solid white; */
+}
+/* .footer-hero-content-container span {
+    border: 1px solid white;
+} */
+.footer-hero-content-container span .footer-hero-content-title {
+    color: white;
+    font-weight: 700;
+}
+.footer-hero-content-container span p {
+    font-size: 1.3em;
+    font-weight: 500;
+}
+.footer-hero-content-container span p a {
+    color: #aaaaaa;
+    text-decoration: none;
+}
+.footer-hero-content-container span p a:hover {
+    color: white;
+}

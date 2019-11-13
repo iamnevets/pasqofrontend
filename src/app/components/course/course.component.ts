@@ -61,7 +61,7 @@ export class CourseComponent implements OnInit {
       if (result.value) {
         this.courseService.delete(id).subscribe(response => {
           if (response.Success) {
-            this.router.navigateByUrl('courses');
+            this.ngOnInit();
 
             Swal.fire({
               title: 'Successful',

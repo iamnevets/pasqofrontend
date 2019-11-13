@@ -3,7 +3,7 @@ import { Login } from 'src/app/models/login';
 import { Router } from '@angular/router';
 import { LoginService } from './login.service';
 import Swal from 'sweetalert2';
-import { Response } from 'selenium-webdriver/http';
+import { HomePageService } from '../home-page/home-page.service';
 
 @Component({
   selector: 'app-login',
@@ -13,30 +13,20 @@ import { Response } from 'selenium-webdriver/http';
 export class LoginComponent implements OnInit {
   user: Login = { Username: '', Password: '', RememberMe: false };
 
-  constructor(private router: Router, private loginService: LoginService) {}
+  constructor(
+    private router: Router,
+    private loginService: LoginService,
+    private homePageService: HomePageService
+  ) {}
 
   ngOnInit() {}
-
-  // check() {
-  //   if (!this.user.Username) {
-  //     // show error message
-  //     return;
-  //   }
-
-  //   if (!this.user.Password) {
-  //     // show error message
-  //     return;
-  //   }
-
-  //   this.login();
-  // }
 
   login() {
     this.loginService.logIn(this.user).subscribe(res => {
       if (res.Success) {
         // console.log(res.Data.UserRole.Name);       //Use this to check if user is a student or admin
+        this.homePageService.isHome = false;
         this.router.navigateByUrl('dashboard');
-        location.reload();
 
         Swal.fire({
           title: 'Welcome',
@@ -54,29 +44,27 @@ export class LoginComponent implements OnInit {
           text: res.Message,
           type: 'error',
           showConfirmButton: true
-          // timer: 1000
         });
       }
     });
   }
 
-  logout() {
-    Swal.fire({
-      title: 'Confirm',
-      text: 'Are you sure?',
-      type: 'question',
-      showConfirmButton: true
-    });
-    this.loginService.logOut().subscribe(res => {
-      if (res.Success) {
-        this.loginService.loggedIn = false;
-        localStorage.setItem('loggedIn', JSON.stringify(false));
-      }
-    });
-  }
+  // logout() {
+  //   Swal.fire({
+  //     title: 'Confirm',
+  //     text: 'Are you sure?',
+  //     type: 'question',
+  //     showConfirmButton: true
+  //   });
+  //   this.loginService.logOut().subscribe(res => {
+  //     if (res.Success) {
+  //       this.loginService.loggedIn = false;
+  //       localStorage.setItem('loggedIn', JSON.stringify(false));
+  //     }
+  //   });
+  // }
 
   home() {
     this.router.navigateByUrl('home');
   }
-
 }

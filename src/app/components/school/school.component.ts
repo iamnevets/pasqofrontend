@@ -60,7 +60,7 @@ export class SchoolComponent implements OnInit {
       if (result.value) {
         this.schoolService.delete(id).subscribe(response => {
           if (response.Success) {
-            this.router.navigateByUrl('schools');
+            this.ngOnInit();
 
             Swal.fire({
               title: 'Successful',

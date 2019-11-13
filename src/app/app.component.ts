@@ -1,4 +1,4 @@
-import { Event, NavigationStart, NavigationEnd, NavigationError, Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { LoginService } from './components/login/login.service';
 import {
   faFileAlt,
@@ -13,10 +13,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import {map} from 'rxjs/operators';
 import Swal from 'sweetalert2';
-import { getCurrencySymbol } from '@angular/common';
-import { stringify } from '@angular/compiler/src/util';
 import { HomePageService } from './components/home-page/home-page.service';
 
 @Component({
@@ -42,8 +39,6 @@ export class AppComponent implements OnInit {
   constructor(private loginService: LoginService, private homePageService: HomePageService, private router: Router) {}
 
   ngOnInit() {
-    // this.route = (window.location.pathname.replace('/', '').toUpperCase());
-    // if (this.route === 'LOGIN') { this.route = 'DASHBOARD'; }
   }
 
   myHome() {
@@ -51,7 +46,9 @@ export class AppComponent implements OnInit {
   }
 
   dashboard() {
+    this.homePageService.isHome = false;
     this.router.navigateByUrl('dashboard');
+    // location.replace('dashboard');
   }
 
   features() {
@@ -104,9 +101,8 @@ export class AppComponent implements OnInit {
   }
 
   home() {
-    this.homePageService.isHome = false;
+    this.homePageService.isHome = true;
     this.router.navigateByUrl('home');
-    location.replace('home');
   }
 
 }

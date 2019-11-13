@@ -68,7 +68,8 @@ export class ProgrammeComponent implements OnInit {
       if (result.value) {
         this.programmeService.delete(id).subscribe(response => {
           if (response.Success) {
-            this.router.navigateByUrl('programmes');
+            // this.router.navigateByUrl('programmes');
+            this.ngOnInit();
 
             Swal.fire({
               title: 'Successful',

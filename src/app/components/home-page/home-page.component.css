@@ -1,109 +1,3 @@
-/* Title-Bar Styles */
-
-/* .title-bar {
-    position: fixed;
-    width: 100%;
-    height: 80px;
-    color: white;
-    font-size: 1.3rem;
-    font-weight: 500;
-    background-color: #40844e;
-    padding: 25px 30px 0px 30px;
-    border-bottom: 1px solid #669D72;
-  }
-
-.logo {
-    float: left;
-}
-
-.nav-items-container {
-    display: inline-block;
-    width: 80%;
-    margin: auto;
-    border: 1px solid black;
-} */
-/* .nav-items-container div {
-    display: grid;
-    grid-template-columns: 10% 10% 10% 10% 10%;
-    column-gap: 5%;
-    width: 80%;
-    margin: auto;
-}
-.nav-items-container div span {
-    height: 50px;
-    width: 140px;
-    margin-top: -15px;
-    padding-top: 8px;
-    text-align: center;
-    cursor: pointer;
-    transition: ease-in-out 0.3s;
-}
-.nav-items-container div span:hover {
-    background-color: #367042;
-    border-radius: 50px;
-    transition: ease-in-out 0.3s;
-}
-.nav-items-container div span:focus {
-    background-color: #367042;
-    border-radius: 50px;
-    transition: ease-in-out 0.3s;
-    outline: none;
-}
-
-.call-to-action-container {
-    float: right;
-    margin-top: -10px;
-    border: 1px solid black;
-} */
-
-/* .sign-up {
-    background-color: #9e4f8f;
-    color: white;
-    font-size: 1em;
-    font-weight: 700;
-    width: 120px;
-    margin-right: 15px;
-    border-radius: 50px;
-    transition: ease-in-out 0.3s;
-}
-.sign-up:hover {
-    background-color: #974187;
-    transition: ease-in-out 0.3s;
-}
-.login {
-    background-color: #fafafa;
-    color: #1c5728;
-    font-size: 1em;
-    font-weight: 700;
-    width: 110px;
-    border-radius: 50px;
-    transition: ease-in-out 0.3s;
-}
-.login:hover {
-    background-color: #f1f1f1;
-    color: #246d32;
-    transition: ease-in-out 0.3s;
-}
-
-.logout {
-    background-color: #fafafa;
-    color: #1c5728;
-    font-size: 1em;
-    font-weight: 700;
-    width: 150px;
-    border-radius: 50px;
-    transition: ease-in-out 0.3s;
-} */
-
-/* Home page body styles*/
-
-/* .main-content {
-    position: inherit;
-    width: 100%;
-    margin-left: 0px;
-    margin-top: 80px;
-    padding-bottom: 50px;
-} */
 .main {
     padding-top: 80px;
     overflow-x: hidden;
@@ -117,10 +11,10 @@
 }
 .welcome-info {
     display: inline-block;
-    width: 55%;
+    width: 50%;
     height: 100%;
     padding: 90px 0;
-    margin-right: 50px;
+    margin-right: 0px;
     color: white;
     /* border: 1px solid black; */
 }
@@ -170,8 +64,10 @@
 .undraw-svg-img {
     float: right;
     height: 100%;
-    width: 40%;
-    margin-top: 30px;
+    width: 45%;
+    padding-top: 30px;
+    padding-left: -30px;
+    /* margin-top: 30px; */
     /* border: 1px solid black; */
 }
 

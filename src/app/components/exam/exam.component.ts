@@ -69,8 +69,7 @@ export class ExamComponent implements OnInit {
       if (result.value) {
         this.examService.delete(id).subscribe(response => {
           if (response.Success) {
-            this.router.navigateByUrl('exams');
-            window.location.reload();
+            this.ngOnInit();
 
             Swal.fire({
               title: 'Successful',

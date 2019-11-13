@@ -10,7 +10,6 @@ export class HomePageService {
     const currentUrl = (window.location.pathname.replace('/', ''));
     if (currentUrl === 'home') {
       this.isHome = true;
-      console.log(currentUrl);
     }
   }
 

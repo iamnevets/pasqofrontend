@@ -64,8 +64,7 @@ export class UserComponent implements OnInit {
       if (result.value) {
         this.userService.deleteUser(id).subscribe(response => {
           if (response.Success) {
-            this.router.navigateByUrl('users');
-            window.location.reload();
+            this.ngOnInit();
 
             Swal.fire({
               title: 'Successful',

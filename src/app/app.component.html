@@ -73,8 +73,8 @@
   </div>
 
   <div class="call-to-action-container">
-    <button class="btn sign-up shadow-lg" (click)="signUp()" *ngIf="!isLoggedIn()">SignUp</button>
-    <button class="btn login shadow-lg" (click)="login()" *ngIf="!isLoggedIn()">Login</button>
+    <button class="btn sign-up shadow-lg" (click)="signUp()" *ngIf="!isLoggedIn() && !isSignUpPage()">SignUp</button>
+    <button class="btn login shadow-lg" (click)="login()" *ngIf="!isLoggedIn() && !isLoginPage()">Login</button>
     <button class="btn logout shadow-lg" *ngIf="isLoggedIn()" (click)="logout()">
       <fa-icon [icon]="faSignOutAlt" [rotate]="180" [fixedWidth]="true" style="color: #f2395a; font-size: 1.1em;">
       </fa-icon>

@@ -8,6 +8,7 @@ import { ReturnObject } from 'src/app/models/return-object';
   providedIn: 'root'
 })
 export class LoginService {
+  isLoginPage = false;
   loggedIn = false;
   currentUser: User;
 
@@ -17,6 +18,15 @@ export class LoginService {
       isUserLoggedIn = 'false';
     }
     this.loggedIn = JSON.parse(isUserLoggedIn);
+
+    const currentUrl = (window.location.pathname.replace('/', ''));
+    if (currentUrl === 'login') {
+      this.isLoginPage = true;
+    }
+  }
+
+  onLoginPage() {
+    return this.isLoginPage ? this.isLoginPage : false;
   }
 
   isLoggedIn() {

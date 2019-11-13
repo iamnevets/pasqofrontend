@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { LoginService } from './login.service';
 import Swal from 'sweetalert2';
 import { HomePageService } from '../home-page/home-page.service';
+import { SignUpService } from '../sign-up/sign-up.service';
 
 @Component({
   selector: 'app-login',
@@ -16,8 +17,11 @@ export class LoginComponent implements OnInit {
   constructor(
     private router: Router,
     private loginService: LoginService,
-    private homePageService: HomePageService
-  ) {}
+    private homePageService: HomePageService,
+    private signUpService: SignUpService
+  ) {
+    this.signUpService.isSignUpPage = false;
+  }
 
   ngOnInit() {}
 
@@ -49,22 +53,12 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  // logout() {
-  //   Swal.fire({
-  //     title: 'Confirm',
-  //     text: 'Are you sure?',
-  //     type: 'question',
-  //     showConfirmButton: true
-  //   });
-  //   this.loginService.logOut().subscribe(res => {
-  //     if (res.Success) {
-  //       this.loginService.loggedIn = false;
-  //       localStorage.setItem('loggedIn', JSON.stringify(false));
-  //     }
-  //   });
-  // }
+  signUp() {
+    this.router.navigateByUrl('signup');
+  }
 
   home() {
+    this.loginService.isLoginPage = false;
     this.router.navigateByUrl('home');
   }
 }

@@ -15,6 +15,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import Swal from 'sweetalert2';
 import { HomePageService } from './components/home-page/home-page.service';
+import { SignUpService } from './components/sign-up/sign-up.service';
 
 @Component({
   selector: 'app-root',
@@ -36,10 +37,14 @@ export class AppComponent implements OnInit {
   faHome = faHome;
   faSignOutAlt = faSignOutAlt;
 
-  constructor(private loginService: LoginService, private homePageService: HomePageService, private router: Router) {}
+  constructor(
+    private signUpService: SignUpService,
+    private loginService: LoginService,
+    private homePageService: HomePageService,
+    private router: Router
+  ) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   myHome() {
     this.router.navigateByUrl('home');
@@ -47,6 +52,7 @@ export class AppComponent implements OnInit {
 
   dashboard() {
     this.homePageService.isHome = false;
+    this.loginService.isLoginPage = false;
     this.router.navigateByUrl('dashboard');
     // location.replace('dashboard');
   }
@@ -68,11 +74,20 @@ export class AppComponent implements OnInit {
   }
 
   login() {
+    this.loginService.isLoginPage = true;
     this.router.navigateByUrl('login');
   }
 
   isHomePage() {
     return this.homePageService.isHomePage();
+  }
+
+  isLoginPage() {
+    return this.loginService.onLoginPage();
+  }
+
+  isSignUpPage() {
+    return this.signUpService.onSignUpPage();
   }
 
   isLoggedIn() {
@@ -104,5 +119,4 @@ export class AppComponent implements OnInit {
     this.homePageService.isHome = true;
     this.router.navigateByUrl('home');
   }
-
 }

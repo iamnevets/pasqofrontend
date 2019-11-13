@@ -1,10 +1,7 @@
 <div class="body">
 
-    <div class="title-bar">
-        <span (click)="home()" style="cursor: pointer;">PASQO</span>
-    </div>
-    <h3 class="header shadow-sm">Login</h3>
     <div class="form-container shadow-lg">
+        <h3 class="header shadow-sm">Login</h3>
         <form (ngSubmit)="login()">
             <div class="form-group">
                 <label for="username">Username</label>
@@ -30,6 +27,16 @@
             <br>
             <button type="submit" class="btn btn-primary btn-block">Login</button>
         </form>
+    </div>
+    <br>
+
+    <div class="call-to-register">
+        <p>
+            Haven't registered yet?
+            <br>
+            <a (click)="signUp()">Create an account</a> <b> now </b>
+            and join the "shacks"!
+        </p>
     </div>
 
 </div>

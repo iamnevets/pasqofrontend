@@ -11,6 +11,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from '../login/login.service';
 import Swal from 'sweetalert2';
+import { SignUpService } from '../sign-up/sign-up.service';
 
 @Component({
   selector: 'app-home-page',
@@ -28,7 +29,10 @@ export class HomePageComponent implements OnInit {
   faFacebook = faFacebook;
   faInstagram = faInstagram;
 
-  constructor(private router: Router, private loginService: LoginService) {}
+  constructor(private router: Router, private loginService: LoginService, private signUpService: SignUpService) {
+    this.loginService.isLoginPage = false;
+    this.signUpService.isSignUpPage = false;
+  }
 
   ngOnInit() {}
 

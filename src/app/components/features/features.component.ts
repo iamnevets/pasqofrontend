@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { faEnvelope, faPhone, faHeart, faClock, faGamepad, faBookReader } from '@fortawesome/free-solid-svg-icons';
 import { faTwitter, faFacebook, faInstagram } from '@fortawesome/free-brands-svg-icons';
 import { HomePageService } from '../home-page/home-page.service';
+import { LoginService } from '../login/login.service';
+import { SignUpService } from '../sign-up/sign-up.service';
 
 @Component({
   selector: 'app-features',
@@ -20,8 +22,10 @@ export class FeaturesComponent implements OnInit {
   faGamepad = faGamepad;
   faBookReader = faBookReader;
 
-  constructor(private homePageService: HomePageService) {
+  constructor(private homePageService: HomePageService, private loginService: LoginService, private signUpService: SignUpService) {
     this.homePageService.isHome = true;
+    this.loginService.isLoginPage = false;
+    this.signUpService.isSignUpPage = false;
   }
 
   ngOnInit() {

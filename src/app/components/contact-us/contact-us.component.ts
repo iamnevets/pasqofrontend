@@ -16,6 +16,8 @@ import { ContactUs } from 'src/app/models/contact-us';
 import Swal from 'sweetalert2';
 import { School } from 'src/app/models/school';
 import { SchoolService } from '../school/school.service';
+import { LoginService } from '../login/login.service';
+import { SignUpService } from '../sign-up/sign-up.service';
 
 @Component({
   selector: 'app-contact-us',
@@ -34,12 +36,16 @@ export class ContactUsComponent implements OnInit {
   schools: School[];
 
   constructor(
+    private signUpService: SignUpService,
     private homePageService: HomePageService,
     private contactUsService: ContactUsService,
     private schoolService: SchoolService,
+    private loginService: LoginService,
     private formBuilder: FormBuilder
   ) {
     this.homePageService.isHome = true;
+    this.loginService.isLoginPage = false;
+    this.signUpService.isSignUpPage = false;
   }
 
   ngOnInit() {

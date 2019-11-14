@@ -1,3 +1,4 @@
+import { ExamPracticeComponent } from './components/exam-practice/exam-practice.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { ExamFormComponent } from './components/exam/exam-form/exam-form.component';
 import { ExamComponent } from './components/exam/exam.component';
@@ -21,6 +22,8 @@ import { FeaturesComponent } from './components/features/features.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
+import { ExamHardComponent } from './components/exam-hard/exam-hard.component';
+import { FlashQuizComponent } from './components/flash-quiz/flash-quiz.component';
 
 const routes: Routes = [
   { path: 'home', component: HomePageComponent },
@@ -49,6 +52,9 @@ const routes: Routes = [
   { path: 'examview/:id', component: ExamViewComponent, canActivate: [AuthGuardService]},
   { path: 'questionform', component: QuestionFormComponent, canActivate: [AuthGuardService]},
   { path: 'questionform/:id', component: QuestionFormComponent, canActivate: [AuthGuardService]},
+  { path: 'exampractice', component: ExamPracticeComponent, canActivate: [AuthGuardService]},
+  { path: 'examhard', component: ExamHardComponent, canActivate: [AuthGuardService]},
+  { path: 'flashquiz', component: FlashQuizComponent, canActivate: [AuthGuardService]},
 
 
   { path: '', redirectTo: 'dashboard', pathMatch: 'full'}

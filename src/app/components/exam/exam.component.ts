@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { faEye, faEdit, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import { Exam } from 'src/app/models/exam';
 import Swal from 'sweetalert2';
+import { User } from 'src/app/models/user';
 
 @Component({
   selector: 'app-exam',
@@ -11,6 +12,8 @@ import Swal from 'sweetalert2';
   styleUrls: ['./exam.component.css']
 })
 export class ExamComponent implements OnInit {
+  isStudent = false;
+
   faEye = faEye;
   faEdit = faEdit;
   faTrashAlt = faTrashAlt;
@@ -32,6 +35,11 @@ export class ExamComponent implements OnInit {
   constructor(private router: Router, private examService: ExamService, ) { }
 
   ngOnInit() {
+    const currentUser: User = JSON.parse(localStorage.getItem('user'));
+    if (currentUser.UserRole.Name === 'Student') {
+      this.isStudent = true;
+    }
+
     this.getAllExams();
   }
 

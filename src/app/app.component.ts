@@ -9,13 +9,18 @@ import {
   faUser,
   faGraduationCap,
   faHome,
-  faSignOutAlt
+  faSignOutAlt,
+  faClock,
+  faGamepad,
+  faChartBar,
+  faSmileWink
 } from '@fortawesome/free-solid-svg-icons';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import Swal from 'sweetalert2';
 import { HomePageService } from './components/home-page/home-page.service';
 import { SignUpService } from './components/sign-up/sign-up.service';
+import { User } from './models/user';
 
 @Component({
   selector: 'app-root',
@@ -26,6 +31,8 @@ export class AppComponent implements OnInit {
   title = 'Pasqo';
   route: string;
   isHome = false;
+  isStudent = false;
+  currentUserName: string;
 
   faFileAlt = faFileAlt;
   faBookReader = faBookReader;
@@ -35,6 +42,10 @@ export class AppComponent implements OnInit {
   faUsers = faUsers;
   faUser = faUser;
   faHome = faHome;
+  faChartBar = faChartBar;
+  faClock = faClock;
+  faGamepad = faGamepad;
+  faSmileWink = faSmileWink;
   faSignOutAlt = faSignOutAlt;
 
   constructor(
@@ -44,7 +55,14 @@ export class AppComponent implements OnInit {
     private router: Router
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    const currentUser: User = JSON.parse(localStorage.getItem('user'));
+    if (currentUser.UserRole.Name === 'Student') {
+      this.isStudent = true;
+    }
+
+    this.currentUserName = currentUser.UserName;
+  }
 
   myHome() {
     this.router.navigateByUrl('home');
@@ -92,6 +110,10 @@ export class AppComponent implements OnInit {
 
   isLoggedIn() {
     return this.loginService.isLoggedIn();
+  }
+
+  isUserStudent() {
+    return this.isStudent ? this.isStudent : false;
   }
 
   logout() {

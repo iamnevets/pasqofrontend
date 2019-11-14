@@ -9,33 +9,52 @@
 
       <ul>
         <a routerLink="dashboard" id="nav-link">
-          <fa-icon [icon]="faHome" [fixedWidth]="true"></fa-icon>
+          <fa-icon [icon]="faChartBar" [fixedWidth]="true"></fa-icon>
           <li>DASHBOARD</li>
         </a>
         <a routerLink="exams" id="nav-link">
           <fa-icon [icon]="faFileAlt" [fixedWidth]="true"></fa-icon>
-          <li>EXAMS</li>
+          <li>
+            <span *ngIf="!isUserStudent()">EXAMS</span>
+            <span *ngIf="isUserStudent()">ALL EXAMS</span>
+          </li>
         </a>
-        <a routerLink="courses" id="nav-link">
+        <a routerLink="courses" id="nav-link" *ngIf="!isUserStudent()">
           <fa-icon [icon]="faBookReader" [fixedWidth]="true"></fa-icon>
           <li>COURSES</li>
         </a>
-        <a routerLink="programmes" id="nav-link">
+        <a routerLink="programmes" id="nav-link" *ngIf="!isUserStudent()">
           <fa-icon [icon]="faGraduationCap" [fixedWidth]="true"></fa-icon>
           <li>PROGRAMMES</li>
         </a>
-        <a routerLink="schools" id="nav-link">
+        <a routerLink="schools" id="nav-link" *ngIf="!isUserStudent()">
           <fa-icon [icon]="faUniversity" [fixedWidth]="true"></fa-icon>
           <li>SCHOOLS</li>
         </a>
-        <a routerLink="users" id="nav-link">
+        <a routerLink="users" id="nav-link" *ngIf="!isUserStudent()">
           <fa-icon [icon]="faUsers" [fixedWidth]="true"></fa-icon>
           <li>USERS</li>
+        </a>
+        <a routerLink="" id="nav-link" *ngIf="isUserStudent()">
+          <fa-icon [icon]="faBookReader" [fixedWidth]="true"></fa-icon>
+          <li>PRACTICE</li>
+        </a>
+        <a routerLink="" id="nav-link" *ngIf="isUserStudent()">
+          <fa-icon [icon]="faClock" [fixedWidth]="true"></fa-icon>
+          <li>EXAMINATION</li>
+        </a>
+        <a routerLink="" id="nav-link" *ngIf="isUserStudent()">
+          <fa-icon [icon]="faGamepad" [fixedWidth]="true"></fa-icon>
+          <li>FLASH-QUIZ</li>
         </a>
         <a routerLink="profile" id="nav-link">
           <fa-icon [icon]="faUser" [fixedWidth]="true"></fa-icon>
           <li>PROFILE</li>
         </a>
+        <br *ngIf="isUserStudent()">
+        <br *ngIf="isUserStudent()">
+        <br *ngIf="isUserStudent()">
+        <br *ngIf="isUserStudent()">
         <br>
         <br>
         <a (click)="logout()" id="nav-link" style="cursor: pointer;">
@@ -51,9 +70,17 @@
 
   <div class="title-bar">
     {{route}}
+    <span class="float-right mr-5" style="font-size: 1.3rem;">
+      <fa-icon [icon]="faSmileWink" [fixedWidth]="true" style="color: #ffca1d;"></fa-icon>
+      Hey, {{currentUserName}}
+    </span>
   </div>
 
 </div>
+
+
+
+<!-- Markup for home Title bar -->
 
 <div class="title-bar-2" *ngIf="isLoggedIn() === false || isHomePage()">
 

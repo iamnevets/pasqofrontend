@@ -31,6 +31,9 @@ import { FeaturesComponent } from './components/features/features.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
+import { ExamPracticeComponent } from './components/exam-practice/exam-practice.component';
+import { ExamHardComponent } from './components/exam-hard/exam-hard.component';
+import { FlashQuizComponent } from './components/flash-quiz/flash-quiz.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +57,10 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
     FeaturesComponent,
     AboutUsComponent,
     ContactUsComponent,
-    SignUpComponent
+    SignUpComponent,
+    ExamPracticeComponent,
+    ExamHardComponent,
+    FlashQuizComponent
   ],
   imports: [
     BrowserModule,

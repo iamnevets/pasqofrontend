@@ -43,4 +43,18 @@ export class AboutUsComponent implements OnInit {
   about() {
     this.router.navigateByUrl('about');
   }
+  contact() {
+    this.router.navigateByUrl('contact');
+  }
+
+  onClickWho() {
+    this.router.navigate(['/about'], { fragment: 'who'});
+  }
+  onClickWhat() {
+    this.router.navigate(['/about'], { fragment: 'what'});
+  }
+  onClickHow() {
+    this.router.navigate(['/about'], { fragment: 'how'});
+  }
+
 }

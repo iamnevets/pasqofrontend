@@ -35,6 +35,7 @@ import { ExamPracticeComponent } from './components/exam-practice/exam-practice.
 import { ExamHardComponent } from './components/exam-hard/exam-hard.component';
 import { FlashQuizComponent } from './components/flash-quiz/flash-quiz.component';
 import { LoadingScreenComponent } from './components/loading-screen/loading-screen.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -67,6 +68,7 @@ import { LoadingScreenComponent } from './components/loading-screen/loading-scre
   imports: [
     BrowserModule,
     AppRoutingModule,
+    RouterModule,
     FontAwesomeModule,
     HttpClientModule,
     ReactiveFormsModule,

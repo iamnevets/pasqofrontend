@@ -14,7 +14,7 @@ import { UserComponent } from './components/user/user.component';
 import { AuthGuardService } from './auth-guard.service';
 import { LoginComponent } from './components/login/login.component';
 import { NgModule, Component } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, ExtraOptions } from '@angular/router';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { QuestionFormComponent } from './components/question/question-form/question-form.component';
 import { ExamViewComponent } from './components/exam/exam-view/exam-view.component';
@@ -60,8 +60,15 @@ const routes: Routes = [
   { path: '', redirectTo: 'dashboard', pathMatch: 'full'}
 ];
 
+const routerOptions: ExtraOptions = {
+  onSameUrlNavigation: 'reload',
+  scrollPositionRestoration: 'enabled',
+  anchorScrolling: 'enabled',
+  scrollOffset: [0, 64],
+};
+
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, routerOptions)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

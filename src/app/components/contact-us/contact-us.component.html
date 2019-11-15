@@ -682,13 +682,13 @@
         <div class="inner-footer-hero">
             <div class="footer-hero-content-container">
                 <span>
-                    <h2 class="footer-hero-content-title">About Us</h2>
-                    <p (click)="about()"> Who we are </p>
-                    <p (click)="about()"> What we do </p>
-                    <p (click)="about()"> How we work </p>
+                    <h2 class="footer-hero-content-title" (click)="about()">About Us</h2>
+                    <p (click)="onClickWho()"> Who we are </p>
+                    <p (click)="onClickWhat()"> What we do </p>
+                    <p (click)="onClickHow()"> How we work </p>
                 </span>
                 <span>
-                    <h2 class="footer-hero-content-title">Contact Us</h2>
+                    <h2 class="footer-hero-content-title" (click)="contact()">Contact Us</h2>
                     <p>Email us at:
                         <br>
                         <a href="mailto:armoosteven1@gmail.com">

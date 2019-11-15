@@ -36,36 +36,21 @@ export class HomePageComponent implements OnInit {
 
   ngOnInit() {}
 
-  // home() {
-  //   this.router.navigateByUrl('home');
-  // }
-
-  // dashboard() {
-  //   this.router.navigateByUrl('dashboard');
-  // }
-
-  // features() {
-  //   this.router.navigateByUrl('features');
-  // }
-
-  // aboutUs() {
-  //   this.router.navigateByUrl('about');
-  // }
-
-  // contactUs() {
-  //   this.router.navigateByUrl('contact');
-  // }
-
-  // signUp() {
-  //   this.router.navigateByUrl('signup');
-  // }
-
-  // login() {
-  //   this.router.navigateByUrl('login');
-  // }
-
   about() {
     this.router.navigateByUrl('about');
+  }
+  contact() {
+    this.router.navigateByUrl('contact');
+  }
+
+  onClickWho() {
+    this.router.navigate(['/about'], { fragment: 'who'});
+  }
+  onClickWhat() {
+    this.router.navigate(['/about'], { fragment: 'what'});
+  }
+  onClickHow() {
+    this.router.navigate(['/about'], { fragment: 'how'});
   }
 
   isLoggedIn() {

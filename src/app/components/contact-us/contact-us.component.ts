@@ -18,6 +18,7 @@ import { School } from 'src/app/models/school';
 import { SchoolService } from '../school/school.service';
 import { LoginService } from '../login/login.service';
 import { SignUpService } from '../sign-up/sign-up.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-contact-us',
@@ -36,6 +37,7 @@ export class ContactUsComponent implements OnInit {
   schools: School[];
 
   constructor(
+    private router: Router,
     private signUpService: SignUpService,
     private homePageService: HomePageService,
     private contactUsService: ContactUsService,
@@ -51,6 +53,10 @@ export class ContactUsComponent implements OnInit {
   ngOnInit() {
     this.getSchools();
     this.contactForm();
+  }
+
+  about() {
+    this.router.navigateByUrl('about');
   }
 
   contactForm() {

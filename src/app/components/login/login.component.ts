@@ -31,6 +31,7 @@ export class LoginComponent implements OnInit {
         // console.log(res.Data.UserRole.Name);       //Use this to check if user is a student or admin
         this.homePageService.isHome = false;
         this.router.navigateByUrl('dashboard');
+        window.location.reload();
 
         Swal.fire({
           title: 'Welcome',

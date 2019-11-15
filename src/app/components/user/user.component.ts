@@ -25,11 +25,15 @@ export class UserComponent implements OnInit {
   userFilter: any = {
     Id: '',
     Name: '',
-    School: {Id: null, Name: ''}
+    School: { Id: null, Name: '' }
   };
   pageNumber = 1;
 
-  constructor(private router: Router, private userService: UserService, private schoolService: SchoolService) {}
+  constructor(
+    private router: Router,
+    private userService: UserService,
+    private schoolService: SchoolService
+  ) {}
 
   ngOnInit() {
     this.GetUsers();
@@ -59,7 +63,7 @@ export class UserComponent implements OnInit {
       showCancelButton: true,
       confirmButtonColor: '#40844e',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'delete it',
+      confirmButtonText: 'delete it'
     }).then(result => {
       if (result.value) {
         this.userService.deleteUser(id).subscribe(response => {

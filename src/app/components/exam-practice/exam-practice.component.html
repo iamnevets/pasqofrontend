@@ -1,1 +1,18 @@
-<p>exam-practice works!</p>
+<div class="main-content">
+
+    <span class="exams-container shadow-lg" *ngFor="let exam of exams">
+        <p class="title"> {{exam.Title}} </p>
+        <br>
+        <h2 class="course-name"> {{exam.Course?.Name}} </h2>
+        <br>
+        <div class="progress" style="height: 10px;">
+            <div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25"
+                aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+        <br>
+        <p class="progress-description">You haven't started this exam yet.</p>
+        <br>
+        <button class="btn btn-save" (click)="practice(exam.Id)">START</button>
+    </span>
+
+</div>

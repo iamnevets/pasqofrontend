@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FilterPipeModule } from 'ngx-filter-pipe';
 import {NgxPaginationModule} from 'ngx-pagination';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+// import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import { RequestInterceptor } from './request-interceptor';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -34,6 +34,7 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { ExamPracticeComponent } from './components/exam-practice/exam-practice.component';
 import { ExamHardComponent } from './components/exam-hard/exam-hard.component';
 import { FlashQuizComponent } from './components/flash-quiz/flash-quiz.component';
+import { LoadingScreenComponent } from './components/loading-screen/loading-screen.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import { FlashQuizComponent } from './components/flash-quiz/flash-quiz.component
     SignUpComponent,
     ExamPracticeComponent,
     ExamHardComponent,
-    FlashQuizComponent
+    FlashQuizComponent,
+    LoadingScreenComponent
   ],
   imports: [
     BrowserModule,
@@ -71,7 +73,7 @@ import { FlashQuizComponent } from './components/flash-quiz/flash-quiz.component
     FormsModule,
     FilterPipeModule,
     NgxPaginationModule,
-    NgbModule
+    // NgbModule
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: RequestInterceptor, multi: true}],
   bootstrap: [AppComponent]

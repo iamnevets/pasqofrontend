@@ -281,6 +281,10 @@ footer div .made-by a:hover {
 .footer-hero-content-container span p {
     font-size: 1.3em;
     font-weight: 500;
+    cursor: pointer;
+}
+.footer-hero-content-container span p:hover {
+    color: white;
 }
 .footer-hero-content-container span p a {
     color: #aaaaaa;
@@ -289,3 +293,4 @@ footer div .made-by a:hover {
 .footer-hero-content-container span p a:hover {
     color: white;
 }
+

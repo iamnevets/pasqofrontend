@@ -1,9 +1,14 @@
 import { QuestionService } from './../../question/question.service';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, RoutesRecognized } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Question } from 'src/app/models/question';
-import { faEdit, faChevronLeft, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+import {
+  faEdit,
+  faChevronLeft,
+  faTrashAlt
+} from '@fortawesome/free-solid-svg-icons';
 import Swal from 'sweetalert2';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-exam-view',
@@ -16,11 +21,13 @@ export class ExamViewComponent implements OnInit {
   faChevronLeft = faChevronLeft;
 
   questions: Question[];
+  previousPage: string;
 
   constructor(
     private router: Router,
     private questionService: QuestionService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private location: Location
   ) {}
 
   ngOnInit() {
@@ -85,11 +92,9 @@ export class ExamViewComponent implements OnInit {
         });
       }
     });
-
   }
 
   back() {
-    this.router.navigateByUrl('exams');
+    this.location.back();
   }
-
 }

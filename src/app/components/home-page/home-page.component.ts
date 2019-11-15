@@ -64,6 +64,10 @@ export class HomePageComponent implements OnInit {
   //   this.router.navigateByUrl('login');
   // }
 
+  about() {
+    this.router.navigateByUrl('about');
+  }
+
   isLoggedIn() {
     return this.loginService.isLoggedIn();
   }

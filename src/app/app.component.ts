@@ -21,6 +21,7 @@ import Swal from 'sweetalert2';
 import { HomePageService } from './components/home-page/home-page.service';
 import { SignUpService } from './components/sign-up/sign-up.service';
 import { User } from './models/user';
+import { UserService } from './components/user/user.service';
 
 @Component({
   selector: 'app-root',
@@ -31,7 +32,6 @@ export class AppComponent implements OnInit {
   title = 'Pasqo';
   route: string;
   isHome = false;
-  isStudent = false;
   currentUserName: string;
 
   faFileAlt = faFileAlt;
@@ -49,6 +49,7 @@ export class AppComponent implements OnInit {
   faSignOutAlt = faSignOutAlt;
 
   constructor(
+    private userService: UserService,
     private signUpService: SignUpService,
     private loginService: LoginService,
     private homePageService: HomePageService,
@@ -57,9 +58,6 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     const currentUser: User = JSON.parse(localStorage.getItem('user'));
-    if (currentUser.UserRole.Name === 'Student') {
-      this.isStudent = true;
-    }
 
     this.currentUserName = currentUser.UserName;
   }
@@ -113,7 +111,7 @@ export class AppComponent implements OnInit {
   }
 
   isUserStudent() {
-    return this.isStudent ? this.isStudent : false;
+    return this.userService.isUserStudent();
   }
 
   logout() {

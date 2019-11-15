@@ -1,9 +1,21 @@
 import { Component, OnInit } from '@angular/core';
-import { faEnvelope, faPhone, faHeart, faClock, faGamepad, faBookReader } from '@fortawesome/free-solid-svg-icons';
-import { faTwitter, faFacebook, faInstagram } from '@fortawesome/free-brands-svg-icons';
+import {
+  faEnvelope,
+  faPhone,
+  faHeart,
+  faClock,
+  faGamepad,
+  faBookReader
+} from '@fortawesome/free-solid-svg-icons';
+import {
+  faTwitter,
+  faFacebook,
+  faInstagram
+} from '@fortawesome/free-brands-svg-icons';
 import { HomePageService } from '../home-page/home-page.service';
 import { LoginService } from '../login/login.service';
 import { SignUpService } from '../sign-up/sign-up.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-features',
@@ -22,13 +34,20 @@ export class FeaturesComponent implements OnInit {
   faGamepad = faGamepad;
   faBookReader = faBookReader;
 
-  constructor(private homePageService: HomePageService, private loginService: LoginService, private signUpService: SignUpService) {
+  constructor(
+    private homePageService: HomePageService,
+    private loginService: LoginService,
+    private signUpService: SignUpService,
+    private router: Router
+  ) {
     this.homePageService.isHome = true;
     this.loginService.isLoginPage = false;
     this.signUpService.isSignUpPage = false;
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
+  about() {
+    this.router.navigateByUrl('about');
+  }
 }

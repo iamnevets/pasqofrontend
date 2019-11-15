@@ -7,8 +7,19 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class UserService {
+  isStudent = false;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    const currentUser: User = JSON.parse(localStorage.getItem('user'));
+    if (currentUser.UserRole.Name === 'Student') {
+      this.isStudent = true;
+    }
+
+  }
+
+  isUserStudent() {
+    return this.isStudent ? this.isStudent : false;
+  }
 
   createOrUpdateUser(data: User) {
     if (data.Id) {

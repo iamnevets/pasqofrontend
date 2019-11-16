@@ -8,46 +8,53 @@
     <div>
 
       <ul>
-        <a routerLink="dashboard" id="nav-link">
+        <a routerLink="dashboard" id="nav-link" attr.aria-current="{{currentPageIsDashboard}}" (click)="dashboard()">
           <fa-icon [icon]="faChartBar" [fixedWidth]="true"></fa-icon>
           <li>DASHBOARD</li>
         </a>
-        <a routerLink="exams" id="nav-link">
+        <a routerLink="exams" id="nav-link" attr.aria-current="{{currentPageIsExams}}" (click)="onClickExams()">
           <fa-icon [icon]="faFileAlt" [fixedWidth]="true"></fa-icon>
           <li>
             <span *ngIf="!isUserStudent()">EXAMS</span>
             <span *ngIf="isUserStudent()">ALL EXAMS</span>
           </li>
         </a>
-        <a routerLink="courses" id="nav-link" *ngIf="!isUserStudent()">
+        <a routerLink="courses" id="nav-link" *ngIf="!isUserStudent()" attr.aria-current="{{currentPageIsCourses}}"
+          (click)="onClickCourses()">
           <fa-icon [icon]="faBookReader" [fixedWidth]="true"></fa-icon>
           <li>COURSES</li>
         </a>
-        <a routerLink="programmes" id="nav-link" *ngIf="!isUserStudent()">
+        <a routerLink="programmes" id="nav-link" *ngIf="!isUserStudent()"
+          attr.aria-current="{{currentPageIsProgrammes}}" (click)="onClickProgrammes()">
           <fa-icon [icon]="faGraduationCap" [fixedWidth]="true"></fa-icon>
           <li>PROGRAMMES</li>
         </a>
-        <a routerLink="schools" id="nav-link" *ngIf="!isUserStudent()">
+        <a routerLink="schools" id="nav-link" *ngIf="!isUserStudent()" attr.aria-current="{{currentPageIsSchools}}"
+          (click)="onClickSchools()">
           <fa-icon [icon]="faUniversity" [fixedWidth]="true"></fa-icon>
           <li>SCHOOLS</li>
         </a>
-        <a routerLink="users" id="nav-link" *ngIf="!isUserStudent()">
+        <a routerLink="users" id="nav-link" *ngIf="!isUserStudent()" attr.aria-current="{{currentPageIsUsers}}"
+          (click)="onClickUsers()">
           <fa-icon [icon]="faUsers" [fixedWidth]="true"></fa-icon>
           <li>USERS</li>
         </a>
-        <a routerLink="exampractice" id="nav-link" *ngIf="isUserStudent()">
+        <a routerLink="exampractice" id="nav-link" *ngIf="isUserStudent()" attr.aria-current="{{currentPageIsPractice}}"
+          (click)="onClickPractice()">
           <fa-icon [icon]="faBookReader" [fixedWidth]="true"></fa-icon>
           <li>PRACTICE</li>
         </a>
-        <a routerLink="examhard" id="nav-link" *ngIf="isUserStudent()">
+        <a routerLink="examhard" id="nav-link" *ngIf="isUserStudent()" attr.aria-current="{{currentPageIsExamination}}"
+          (click)="onClickExamination()">
           <fa-icon [icon]="faClock" [fixedWidth]="true"></fa-icon>
           <li>EXAMINATION</li>
         </a>
-        <a routerLink="flashquiz" id="nav-link" *ngIf="isUserStudent()">
+        <a routerLink="flashquiz" id="nav-link" *ngIf="isUserStudent()" attr.aria-current="{{currentPageIsFlashQuiz}}"
+          (click)="onClickFlashQuiz()">
           <fa-icon [icon]="faGamepad" [fixedWidth]="true"></fa-icon>
           <li>FLASH-QUIZ</li>
         </a>
-        <a routerLink="profile" id="nav-link">
+        <a routerLink="profile" id="nav-link" attr.aria-current="{{currentPageIsProfile}}" (click)="onClickProfile()">
           <fa-icon [icon]="faUser" [fixedWidth]="true"></fa-icon>
           <li>PROFILE</li>
         </a>
@@ -84,18 +91,18 @@
 
 <div class="title-bar-2" *ngIf="isLoggedIn() === false || isHomePage()">
 
-  <h4 class="logo">PASQO</h4>
+  <h4 class="logo" attr.aria-current="{{currentPageIsHome}}">PASQO</h4>
 
   <div class="nav-items-container">
     <div>
-      <span (click)="myHome()" tabindex="0">
+      <span (click)="myHome()" attr.aria-current="{{currentPageIsHome}}">
         <fa-icon [icon]="faHome" [fixedWidth]="true"></fa-icon>
         Home
       </span>
       <span (click)="dashboard()" *ngIf="isLoggedIn()" tabindex="0">Dashboard</span>
-      <span (click)="features()" tabindex="0">Features</span>
-      <span (click)="aboutUs()" tabindex="0">About Us</span>
-      <span (click)="contactUs()" tabindex="0">Contact Us</span>
+      <span (click)="features()" attr.aria-current="{{currentPageIsFeatured}}">Features</span>
+      <span (click)="aboutUs()" attr.aria-current="{{currentPageIsAbout}}">About Us</span>
+      <span (click)="contactUs()" attr.aria-current="{{currentPageIsContact}}">Contact Us</span>
     </div>
   </div>
 

@@ -55,6 +55,7 @@ export class LoginComponent implements OnInit {
   }
 
   signUp() {
+    this.loginService.isLoginPage = false;
     this.router.navigateByUrl('signup');
   }
 

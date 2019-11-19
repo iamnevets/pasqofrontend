@@ -33,6 +33,7 @@ export class AppComponent implements OnInit {
   route: string;
   isHome = false;
   currentUserName: string;
+  isRootAdmin = false;
 
   currentPageIsHome: string;
   currentPageIsFeatured: string;
@@ -74,8 +75,11 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     const currentUser: User = JSON.parse(localStorage.getItem('user'));
-
     this.currentUserName = currentUser.UserName;
+
+    if (currentUser.Name.toLowerCase() === 'administrator') {
+      this.isRootAdmin = true;
+    }
   }
 
   myHome() {
@@ -91,6 +95,7 @@ export class AppComponent implements OnInit {
     this.currentPageIsPractice = '';
     this.currentPageIsExamination = '';
     this.currentPageIsFlashQuiz = '';
+    this.currentPageIsProfile = '';
     this.currentPageIsDashboard = 'page';
 
     this.homePageService.isHome = false;
@@ -144,6 +149,32 @@ export class AppComponent implements OnInit {
     this.router.navigateByUrl('login');
   }
 
+  logout() {
+    Swal.fire({
+      title: 'Confirm Logout',
+      text: '',
+      type: 'question',
+      showConfirmButton: true,
+      confirmButtonText: 'Yes',
+      confirmButtonColor: '#40844e'
+    }).then(result => {
+      if (result.value) {
+        this.loginService.logOut().subscribe(res => {
+          if (res.Success) {
+            this.loginService.loggedIn = false;
+            localStorage.setItem('loggedIn', JSON.stringify(false));
+
+            this.currentPageIsHome = 'page';
+            this.currentPageIsFeatured = '';
+            this.currentPageIsAbout = '';
+            this.currentPageIsContact = '';
+            this.router.navigateByUrl('home');
+          }
+        });
+      }
+    });
+  }
+
   isHomePage() {
     return this.homePageService.isHomePage();
   }
@@ -164,34 +195,14 @@ export class AppComponent implements OnInit {
     return this.userService.isUserStudent();
   }
 
-  logout() {
-    Swal.fire({
-      title: 'Confirm Logout',
-      text: '',
-      type: 'question',
-      showConfirmButton: true,
-      confirmButtonText: 'Yes',
-      confirmButtonColor: '#40844e'
-    }).then(result => {
-      if (result.value) {
-        this.loginService.logOut().subscribe(res => {
-          if (res.Success) {
-            this.loginService.loggedIn = false;
-            localStorage.setItem('loggedIn', JSON.stringify(false));
-            this.router.navigateByUrl('home');
-          }
-        });
-      }
-    });
-  }
-
   home() {
+    this.currentPageIsFeatured = '';
+    this.currentPageIsAbout = '';
+    this.currentPageIsContact = '';
     this.currentPageIsHome = 'page';
     this.homePageService.isHome = true;
     this.router.navigateByUrl('home');
   }
-
-
 
   onClickExams() {
     this.currentPageIsDashboard = '';
@@ -285,5 +296,4 @@ export class AppComponent implements OnInit {
     this.currentPageIsFlashQuiz = 'page';
     this.currentPageIsProfile = '';
   }
-
 }

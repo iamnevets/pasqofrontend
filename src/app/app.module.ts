@@ -36,6 +36,8 @@ import { ExamHardComponent } from './components/exam-hard/exam-hard.component';
 import { FlashQuizComponent } from './components/flash-quiz/flash-quiz.component';
 import { LoadingScreenComponent } from './components/loading-screen/loading-screen.component';
 import { RouterModule } from '@angular/router';
+import { ExamRecordsComponent } from './components/exam-records/exam-records.component';
+import { ExamRecordViewComponent } from './components/exam-records/exam-record-view/exam-record-view.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +65,9 @@ import { RouterModule } from '@angular/router';
     ExamPracticeComponent,
     ExamHardComponent,
     FlashQuizComponent,
-    LoadingScreenComponent
+    LoadingScreenComponent,
+    ExamRecordsComponent,
+    ExamRecordViewComponent
   ],
   imports: [
     BrowserModule,

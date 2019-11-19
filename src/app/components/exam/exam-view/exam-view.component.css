@@ -3,6 +3,10 @@
     margin: auto;
 }
 
+fa-icon {
+    cursor: pointer;
+}
+
 .exam-header-info {
     height: 100px;
     padding: 10px 50px;
@@ -10,6 +14,16 @@
     font-weight: 500;
     background-color: #eefff2;
     color: #575757;
+}
+
+.add-question {
+    float: right;
+    font-size: 2.5rem;
+    color: #9e4f8f;
+}
+
+.btn-save {
+    float: right;
 }
 
 .question-and-answers {
@@ -28,13 +42,11 @@
 
 .edit-question {
     float: right;
-    cursor: pointer;
     color: #40844e;
     font-size: 1.2rem;
 }
 .delete-question {
     float: right;
-    cursor: pointer;
     color: #cc1a3b;
     font-size: 1.2rem;
 }

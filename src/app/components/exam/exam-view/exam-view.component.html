@@ -6,29 +6,57 @@
 
     <div class="main-exam-container shadow-lg border-secondary mt-3 mb-5 pb-5">
 
-        <div class="exam-header-info">2019 Summer-break Exam</div>
+        <div class="exam-header-info">2019 Summer-break Exam
+            <span class="add-question" (click)="addQuestion()" *ngIf="isStudent === false">
+                <fa-icon [icon]="faPlusSquare" [fixedWidth]="true"></fa-icon>
+            </span>
+            <button type="submit" class="btn btn-save" (click)="submit()" *ngIf="previousPage !== 'exampractice'">
+                <fa-icon [icon]="faShareSquare" [fixedWidth]="true"></fa-icon>
+                Submit
+            </button>
+        </div>
+
         <div class="question-and-answers mt-5 shadow-sm p-4" *ngFor="let question of questions; let i=index;">
             <p class="question">{{i+1}}. {{question.QuestionText}}</p>
-            <fa-icon [icon]="faTrashAlt" [fixedWidth]="true" class="delete-question" (click)="delete(question.Id)"></fa-icon>
-            <fa-icon [icon]="faEdit" [fixedWidth]="true" class="edit-question" (click)="updateQuestion(question.Id)">
+            <fa-icon [icon]="faTrashAlt" [fixedWidth]="true" class="delete-question" (click)="delete(question.Id)"
+                *ngIf="isStudent === false">
+            </fa-icon>
+            <fa-icon [icon]="faEdit" [fixedWidth]="true" class="edit-question" (click)="updateQuestion(question.Id)"
+                *ngIf="isStudent === false">
             </fa-icon>
             <br>
             <br>
             <div class="answers-container">
                 <label class="answer custom-radio-btn">{{question.Answer1}}
-                    <input type="radio" name={{i+1}}>
+                    <input type="radio" name="Question{{i+1}}" value={{question.Answer1}}
+                        (click)="selectedAnswer(question.Id, question.Answer1)" *ngIf="isRetake === true">
+                    <input type="radio" name="Question{{i+1}}" value={{question.Answer1}}
+                        (click)="selectedAnswer(question.Id, question.Answer1)"
+                        [defaultChecked]="resumedAnswer(question.Id, question.Answer1)" *ngIf="isRetake === false">
                     <span class="circle"></span>
                 </label>
                 <label class="answer custom-radio-btn">{{question.Answer2}}
-                    <input type="radio" name={{i+1}}>
+                    <input type="radio" name="Question{{i+1}}" value={{question.Answer2}}
+                        (click)="selectedAnswer(question.Id, question.Answer2)" *ngIf="isRetake === true">
+                    <input type="radio" name="Question{{i+1}}" value={{question.Answer2}}
+                        (click)="selectedAnswer(question.Id, question.Answer2)"
+                        [defaultChecked]="resumedAnswer(question.Id, question.Answer2)" *ngIf="isRetake === false">
                     <span class="circle"></span>
                 </label>
                 <label class="answer custom-radio-btn">{{question.Answer3}}
-                    <input type="radio" name={{i+1}}>
+                    <input type="radio" name="Question{{i+1}}" value={{question.Answer3}}
+                        (click)="selectedAnswer(question.Id, question.Answer3)" *ngIf="isRetake === true">
+                    <input type="radio" name="Question{{i+1}}" value={{question.Answer3}}
+                        (click)="selectedAnswer(question.Id, question.Answer3)"
+                        [defaultChecked]="resumedAnswer(question.Id, question.Answer3)" *ngIf="isRetake === false">
                     <span class="circle"></span>
                 </label>
                 <label class="answer custom-radio-btn">{{question.Answer4}}
-                    <input type="radio" name={{i+1}}>
+                    <input type="radio" name="Question{{i+1}}" value={{question.Answer4}}
+                        (click)="selectedAnswer(question.Id, question.Answer4)" *ngIf="isRetake === true">
+                    <input type="radio" name="Question{{i+1}}" value={{question.Answer4}}
+                        (click)="selectedAnswer(question.Id, question.Answer4)"
+                        [defaultChecked]="resumedAnswer(question.Id, question.Answer4)" *ngIf="isRetake === false">
                     <span class="circle"></span>
                 </label>
             </div>

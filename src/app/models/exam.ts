@@ -12,4 +12,6 @@ export interface Exam {
     CourseId: number;
     Course: Course;
     Year: Date;
+
+    numOfQuestions: number;
 }

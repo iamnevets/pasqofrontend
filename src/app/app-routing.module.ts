@@ -24,6 +24,8 @@ import { ContactUsComponent } from './components/contact-us/contact-us.component
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { ExamHardComponent } from './components/exam-hard/exam-hard.component';
 import { FlashQuizComponent } from './components/flash-quiz/flash-quiz.component';
+import { ExamRecordsComponent } from './components/exam-records/exam-records.component';
+import { ExamRecordViewComponent } from './components/exam-records/exam-record-view/exam-record-view.component';
 
 const routes: Routes = [
   { path: 'home', component: HomePageComponent },
@@ -55,6 +57,8 @@ const routes: Routes = [
   { path: 'exampractice', component: ExamPracticeComponent, canActivate: [AuthGuardService]},
   { path: 'examhard', component: ExamHardComponent, canActivate: [AuthGuardService]},
   { path: 'flashquiz', component: FlashQuizComponent, canActivate: [AuthGuardService]},
+  { path: 'examrecord', component: ExamRecordsComponent, canActivate: [AuthGuardService]},
+  { path: 'examrecordview/:id', component: ExamRecordViewComponent, canActivate: [AuthGuardService]},
 
 
   { path: '', redirectTo: 'dashboard', pathMatch: 'full'}

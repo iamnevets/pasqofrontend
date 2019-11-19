@@ -48,7 +48,7 @@ export class ExamComponent implements OnInit {
   }
 
   viewExam(id: number) {
-    this.router.navigateByUrl('examview/' + id);
+    this.router.navigate(['/examview/' + id, {previous: 'exams'}]);
   }
 
   updateExam(id: number) {

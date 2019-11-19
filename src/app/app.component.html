@@ -4,7 +4,10 @@
     <header>
       <span (click)="home()">PASQO</span>
     </header>
-    <br><br>
+    <br>
+    <br>
+    <br>
+    <br *ngIf="!isUserStudent() && !isRootAdmin">
     <div>
 
       <ul>
@@ -29,12 +32,12 @@
           <fa-icon [icon]="faGraduationCap" [fixedWidth]="true"></fa-icon>
           <li>PROGRAMMES</li>
         </a>
-        <a routerLink="schools" id="nav-link" *ngIf="!isUserStudent()" attr.aria-current="{{currentPageIsSchools}}"
+        <a routerLink="schools" id="nav-link" *ngIf="!isUserStudent() && isRootAdmin" attr.aria-current="{{currentPageIsSchools}}"
           (click)="onClickSchools()">
           <fa-icon [icon]="faUniversity" [fixedWidth]="true"></fa-icon>
           <li>SCHOOLS</li>
         </a>
-        <a routerLink="users" id="nav-link" *ngIf="!isUserStudent()" attr.aria-current="{{currentPageIsUsers}}"
+          <a routerLink="users" id="nav-link" *ngIf="!isUserStudent() && isRootAdmin" attr.aria-current="{{currentPageIsUsers}}"
           (click)="onClickUsers()">
           <fa-icon [icon]="faUsers" [fixedWidth]="true"></fa-icon>
           <li>USERS</li>
@@ -58,10 +61,12 @@
           <fa-icon [icon]="faUser" [fixedWidth]="true"></fa-icon>
           <li>PROFILE</li>
         </a>
-        <br *ngIf="isUserStudent()">
-        <br *ngIf="isUserStudent()">
-        <br *ngIf="isUserStudent()">
-        <br *ngIf="isUserStudent()">
+        <br *ngIf="isUserStudent() || !isRootAdmin">
+        <br *ngIf="isUserStudent() || !isRootAdmin">
+        <br *ngIf="isUserStudent() || !isRootAdmin">
+        <br *ngIf="isUserStudent() || !isRootAdmin">
+        <br *ngIf="!isUserStudent() && !isRootAdmin">
+        <br *ngIf="!isUserStudent() && !isRootAdmin">
         <br>
         <br>
         <a (click)="logout()" id="nav-link" style="cursor: pointer;">
@@ -91,7 +96,7 @@
 
 <div class="title-bar-2" *ngIf="isLoggedIn() === false || isHomePage()">
 
-  <h4 class="logo" attr.aria-current="{{currentPageIsHome}}">PASQO</h4>
+  <h4 class="logo">PASQO</h4>
 
   <div class="nav-items-container">
     <div>
@@ -99,7 +104,7 @@
         <fa-icon [icon]="faHome" [fixedWidth]="true"></fa-icon>
         Home
       </span>
-      <span (click)="dashboard()" *ngIf="isLoggedIn()" tabindex="0">Dashboard</span>
+      <span (click)="dashboard()" *ngIf="isLoggedIn()">Dashboard</span>
       <span (click)="features()" attr.aria-current="{{currentPageIsFeatured}}">Features</span>
       <span (click)="aboutUs()" attr.aria-current="{{currentPageIsAbout}}">About Us</span>
       <span (click)="contactUs()" attr.aria-current="{{currentPageIsContact}}">Contact Us</span>

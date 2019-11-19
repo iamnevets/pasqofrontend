@@ -2,10 +2,16 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { QuestionService } from '../question.service';
 import { ExamService } from '../../exam/exam.service';
-import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  Validators,
+  FormControl
+} from '@angular/forms';
 import { Exam } from 'src/app/models/exam';
 import { Question } from 'src/app/models/question';
 import Swal from 'sweetalert2';
+import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-question-form',
@@ -15,8 +21,11 @@ import Swal from 'sweetalert2';
 export class QuestionFormComponent implements OnInit {
   exams: Exam[];
   examId: number;
+  examIdForBackbutton: number;
   examTitle: string;
   formGroup: FormGroup;
+
+  faChevronLeft = faChevronLeft;
 
   constructor(
     private router: Router,
@@ -30,6 +39,11 @@ export class QuestionFormComponent implements OnInit {
     const id = +this.activatedRoute.snapshot.paramMap.get('id');
     if (id) {
       this.editQuestion(id);
+    }
+    const examId = +this.activatedRoute.snapshot.paramMap.get('examid');
+    if (examId) {
+      this.examId = examId;
+      this.examIdForBackbutton = examId;
     }
 
     this.questionForm();
@@ -56,12 +70,17 @@ export class QuestionFormComponent implements OnInit {
 
     this.questionService.createOrUpdate(data).subscribe(response => {
       if (response.Success) {
-        this.router.navigateByUrl('questionform');
-        // window.location.reload();
+
+        if (response.Message.toLowerCase() === 'created') {
+          // this.ngOnInit();
+          location.reload();
+        } else {
+          this.router.navigateByUrl('examview/' + this.examIdForBackbutton);
+        }
 
         Swal.fire({
           title: 'Successful',
-          text: 'Question Created',
+          text: 'Question ' + response.Message,
           type: 'success',
           showConfirmButton: false,
           timer: 1000
@@ -82,8 +101,15 @@ export class QuestionFormComponent implements OnInit {
     this.questionService.getOneQuestion(id).subscribe(response => {
       if (response.Data.Id === id) {
         this.formGroup.patchValue(response.Data);
+
+        this.examIdForBackbutton = response.Data.ExamId;
+        console.log(this.examIdForBackbutton);
       }
     });
+  }
+
+  back() {
+    this.router.navigateByUrl('examview/' + this.examIdForBackbutton);
   }
 
   cancel() {
@@ -99,5 +125,4 @@ export class QuestionFormComponent implements OnInit {
       }
     });
   }
-
 }

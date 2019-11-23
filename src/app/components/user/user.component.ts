@@ -21,7 +21,7 @@ export class UserComponent implements OnInit {
   faUserEdit = faUserEdit;
   faTrashAlt = faTrashAlt;
 
-  users: User[];
+  users: User[] = [];
   userFilter: any = {
     Id: '',
     Name: '',

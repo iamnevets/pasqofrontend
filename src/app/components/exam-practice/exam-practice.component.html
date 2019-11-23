@@ -36,10 +36,10 @@
         <br>
         <p class="progress-description" *ngIf="getProgressCounter(exam.Id) === 0">You haven't started this exam yet.</p>
         <p class="progress-description" *ngIf="getProgressCounter(exam.Id) > 0">
-            You have solved {{ getProgressCounter(exam.Id) }}/{{exam.numOfQuestions}}
+            You have solved {{ getProgressCounter(exam.Id) }}/{{exam.numOfQuestions}} questions
         </p>
         <br>
-        <button class="btn btn-save" (click)="practice(exam.Id)" *ngIf="getProgressCounter(exam.Id) === 0">
+        <button class="btn btn-save" (click)="practice(exam.Id, 'start')" *ngIf="getProgressCounter(exam.Id) === 0">
             START
         </button>
         <button class="btn btn-save" (click)="practice(exam.Id)"

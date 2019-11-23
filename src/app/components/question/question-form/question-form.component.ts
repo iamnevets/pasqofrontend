@@ -67,13 +67,14 @@ export class QuestionFormComponent implements OnInit {
 
   createOrUpdate() {
     const data: Question = this.formGroup.value;
+    data.ExamId = this.examId;
 
     this.questionService.createOrUpdate(data).subscribe(response => {
       if (response.Success) {
 
         if (response.Message.toLowerCase() === 'created') {
-          // this.ngOnInit();
-          location.reload();
+          this.router.navigateByUrl('questionform');
+          this.ngOnInit();
         } else {
           this.router.navigateByUrl('examview/' + this.examIdForBackbutton);
         }
@@ -120,8 +121,7 @@ export class QuestionFormComponent implements OnInit {
     this.examService.getAllExams().subscribe(response => {
       if (response.Success) {
         this.exams = response.Data;
-        this.examId = this.exams[this.exams.length - 1].Id;
-        this.examTitle = this.exams.pop().Title;
+        this.examTitle = this.exams.find(x => x.Id === this.examId).Title;
       }
     });
   }

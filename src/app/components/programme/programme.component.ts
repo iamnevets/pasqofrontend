@@ -15,7 +15,7 @@ export class ProgrammeComponent implements OnInit {
   faEdit = faEdit;
   faTrashAlt = faTrashAlt;
 
-  programmes: Programme[];
+  programmes: Programme[] = [];
   programmeFilter: any = {
     Id: null,
     Name: '',

@@ -1,14 +1,15 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FilterPipeModule } from 'ngx-filter-pipe';
-import {NgxPaginationModule} from 'ngx-pagination';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import { RequestInterceptor } from './request-interceptor';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './components/login/login.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { from } from 'rxjs';
@@ -24,7 +25,7 @@ import { CourseFormComponent } from './components/course/course-form/course-form
 import { ProfileComponent } from './components/profile/profile.component';
 import { ExamComponent } from './components/exam/exam.component';
 import { ExamFormComponent } from './components/exam/exam-form/exam-form.component';
-import { QuestionFormComponent} from './components/question/question-form/question-form.component';
+import { QuestionFormComponent } from './components/question/question-form/question-form.component';
 import { ExamViewComponent } from './components/exam/exam-view/exam-view.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { FeaturesComponent } from './components/features/features.component';
@@ -79,9 +80,10 @@ import { ExamRecordViewComponent } from './components/exam-records/exam-record-v
     FormsModule,
     FilterPipeModule,
     NgxPaginationModule,
-    // NgbModule
+    BrowserAnimationsModule,
   ],
-  providers: [{provide: HTTP_INTERCEPTORS, useClass: RequestInterceptor, multi: true}],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: RequestInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

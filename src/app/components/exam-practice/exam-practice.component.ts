@@ -32,7 +32,6 @@ export class ExamPracticeComponent implements OnInit {
   constructor(
     private router: Router,
     private examService: ExamService,
-    private examPracticeService: ExamPracticeService,
     private examRecordsService: ExamRecordsService
   ) {}
 
@@ -54,19 +53,23 @@ export class ExamPracticeComponent implements OnInit {
   getAllExamRecords(userId: string) {
     this.examRecordsService.getAllExamRecords(userId).subscribe(response => {
       if (response.Success) {
-        this.examRecords = response.Data;
+        const allExamRecords: ExamRecord[] = response.Data;
+        this.examRecords = allExamRecords.filter(x => x.ExamType === 'practice');
         localStorage.setItem('examrecords', JSON.stringify(response.Data));
       }
     });
   }
 
-  practice(id: number) {
-    this.router.navigate(['/examview/' + id, { previous: 'exampractice' }]);
+  practice(id: number, examState = '') {   // Use examState to know if user has taken the exam before
+    if (examState === '') {
+      this.router.navigate(['/examview/' + id, { previous: 'exampractice' }]);
+    } else {
+      this.router.navigate(['/examview/' + id, { previous: 'exampractice', examState }]);
+    }
   }
 
   getProgressCounter(id: number) {
     // tslint:disable-next-line: prefer-for-of
-    // tslint:disable-next-line: no-debugger
     for (let i = this.examRecords.length - 1; i >= 0; i--) {
       if (this.examRecords[i].ExamId === id) {
         return this.examRecords[i].NumberOfQuestionsAnswered > 0

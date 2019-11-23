@@ -8,6 +8,7 @@ export interface ExamRecord {
     User: User;
     ExamId: number;
     Exam: Exam;
+    ExamType: string;
     Score: number;
     TimeTaken: string;
     SelectedAnswers: SelectedAnswer[];

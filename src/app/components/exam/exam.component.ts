@@ -18,7 +18,7 @@ export class ExamComponent implements OnInit {
   faEdit = faEdit;
   faTrashAlt = faTrashAlt;
 
-  exams: Exam[];
+  exams: Exam[] = [];
   examFilter: any = {
     Id: null,
     Title: '',
@@ -32,7 +32,7 @@ export class ExamComponent implements OnInit {
   };
   pageNumber = 1;
 
-  constructor(private router: Router, private examService: ExamService, ) { }
+  constructor(private router: Router, private examService: ExamService) { }
 
   ngOnInit() {
     const currentUser: User = JSON.parse(localStorage.getItem('user'));

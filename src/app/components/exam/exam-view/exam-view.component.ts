@@ -7,7 +7,8 @@ import {
   faChevronLeft,
   faTrashAlt,
   faPlusSquare,
-  faShareSquare
+  faShareSquare,
+  faClock
 } from '@fortawesome/free-solid-svg-icons';
 import Swal from 'sweetalert2';
 import { Location } from '@angular/common';
@@ -28,6 +29,7 @@ export class ExamViewComponent implements OnInit {
   faChevronLeft = faChevronLeft;
   faPlusSquare = faPlusSquare;
   faShareSquare = faShareSquare;
+  faClock = faClock;
 
   selectedAnswers: SelectedAnswer[] = [];
   questions: Question[] = [];
@@ -35,12 +37,19 @@ export class ExamViewComponent implements OnInit {
   examRecord: ExamRecord;
   currentExamRecord: ExamRecord;
   examRecords: ExamRecord[] = [];
+  correctAnswerQuestionId: number;
+  showCorrectAnswer: boolean;
   examId: number;
   currentUserId: string;
+  examState: string;
   previousPage: string;
   isStudent = false;
   isRetake = false;
   totalNumberOfQuestions = 0;
+  hourCountdown = 0;
+  minsCountdown = 45;
+  secondsCountdown = 60;
+  interval;
 
   constructor(
     private router: Router,
@@ -51,32 +60,80 @@ export class ExamViewComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    // Get the examId from the url, to help load the right questions with this examId
     const id = +this.activatedRoute.snapshot.paramMap.get('id');
     if (id) {
       this.examId = id;
       this.getAllQuestions(id);
     }
 
+    // Get the hour/Minutes values to set the timer for countdown
+    const hourCountdown = +this.activatedRoute.snapshot.paramMap.get(
+      'hourCountdown'
+    );
+    if (hourCountdown) {
+      this.hourCountdown = hourCountdown;
+    }
+    const minsCountdown = +this.activatedRoute.snapshot.paramMap.get(
+      'minsCountdown'
+    );
+    if (minsCountdown) {
+      this.minsCountdown = minsCountdown;
+    }
+    if (hourCountdown && !minsCountdown) {
+      this.minsCountdown = 0;
+    }
+    this.startTimer();
+
+    // Find out the previous page to know what to display and what not
     const previousPage = this.activatedRoute.snapshot.paramMap.get('previous');
     if (previousPage) {
       this.previousPage = previousPage;
     }
 
+    /* Find out if user is taking exam for the first time to know whether or not to
+       even try to resume answers */
+    const examState = this.activatedRoute.snapshot.paramMap.get('examState');
+    if (examState) {
+      this.examState = examState;
+    }
+
+    // Find out the role of the current user for display purposes
     const currentUser: User = JSON.parse(localStorage.getItem('user'));
     this.currentUserId = currentUser.Id;
     if (currentUser.UserRole.Name === 'Student') {
       this.isStudent = true;
     }
 
+    // Get exam records from local storage, and set the most recent one to currentExamRecords
     const examRecords: ExamRecord[] = JSON.parse(
       localStorage.getItem('examrecords')
     );
     this.examRecords = examRecords.filter(x => x.ExamId === this.examId);
     this.currentExamRecord = this.examRecords.pop();
-    console.log(this.currentExamRecord);
-
   }
 
+  // Function to begin countdown, on examination (exam-hard)
+  startTimer() {
+    this.interval = setInterval(() => {
+      if (this.secondsCountdown > 0) {
+        this.secondsCountdown--;
+      } else {
+        if (this.minsCountdown > 0) {
+          this.secondsCountdown = 60;
+          this.minsCountdown--;
+        } else {
+          if (this.hourCountdown > 0) {
+            this.minsCountdown = 59;
+            this.secondsCountdown = 60;
+            this.hourCountdown--;
+          }
+        }
+      }
+    }, 1000);
+  }
+
+  // Function to display answers to questions that user started but didn't complete
   resumedAnswer(questionId: number, answer: string) {
     // tslint:disable-next-line: prefer-for-of
     for (let i = 0; i < this.currentExamRecord.SelectedAnswers.length; i++) {
@@ -90,6 +147,7 @@ export class ExamViewComponent implements OnInit {
     }
   }
 
+  // A function to save user's selected answers
   selectedAnswer(id: number, selectedAnswer: string) {
     for (let i = 0; i < this.questionsLength; i++) {
       if (id === this.selectedAnswers[i].QuestionId) {
@@ -99,6 +157,18 @@ export class ExamViewComponent implements OnInit {
     }
   }
 
+  // A click-event function to set correct answer
+  showAnswer(questionId: number) {
+    // tslint:disable-next-line: prefer-for-of
+    for (let i = 0; i < this.questions.length; i++) {
+      if (this.questions[i].Id === questionId) {
+        this.showCorrectAnswer = !this.showCorrectAnswer;
+        this.correctAnswerQuestionId = questionId;
+      }
+    }
+  }
+
+  // Function to load the questions
   getAllQuestions(examId: number) {
     this.questionService.getAllQuestions(examId).subscribe(response => {
       if (response.Success) {
@@ -115,10 +185,15 @@ export class ExamViewComponent implements OnInit {
         }
 
         // Check to see if user is retaking exam(complete) or resuming exam(incomplete)
-        if (this.currentExamRecord.NumberOfQuestionsAnswered < this.questions.length) {
-          this.isRetake = false;
-        } else {
-          this.isRetake = true;
+        if (this.isStudent === true && this.examState !== 'start') {
+          if (
+            this.currentExamRecord.NumberOfQuestionsAnswered <
+            this.questions.length
+          ) {
+            this.isRetake = false;
+          } else {
+            this.isRetake = true;
+          }
         }
       } else {
         Swal.fire({
@@ -131,14 +206,13 @@ export class ExamViewComponent implements OnInit {
     });
   }
 
+  // Functions for an admin to be able to add/update/delete questions while previewing an exam
   addQuestion() {
     this.router.navigate(['/questionform', { examid: this.examId }]);
   }
-
   updateQuestion(id: number) {
     this.router.navigateByUrl('questionform/' + id);
   }
-
   delete(id: number) {
     Swal.fire({
       title: 'Confirm',
@@ -175,6 +249,18 @@ export class ExamViewComponent implements OnInit {
     });
   }
 
+  // Function to get the type of exam, to help differentiate exam records
+  checkExamType() {
+    if (this.previousPage === 'exampractice') {
+      return 'practice';
+    } else if (this.previousPage === 'examhard') {
+      return 'examination';
+    } else {
+      return 'flash-quiz';
+    }
+  }
+
+  // Function to get the number of questions answered, to show on exam practice page
   numberOfQuestionsAnswered() {
     let count = 0;
     for (let i = 0; i < this.questionsLength; i++) {
@@ -182,14 +268,12 @@ export class ExamViewComponent implements OnInit {
         count++;
       }
     }
-    // this.progressCounter = count;
-
-    this.examPracticeService.examId = this.examId;
-    this.examPracticeService.progressCounter = count;
     return count;
   }
 
   submit() {
+    clearInterval(this.interval);
+    // modal to make sure user is certain they want to submit their answers
     Swal.fire({
       title: 'Confirm Submission',
       text: 'Are you sure?',
@@ -199,14 +283,17 @@ export class ExamViewComponent implements OnInit {
       confirmButtonColor: '#40844e'
     }).then(result => {
       if (result.value) {
+        // block to be executed if user confirms in the affirmative
         this.examRecord = {
+          // Create new exam record
           Id: null,
           UserId: this.currentUserId,
           User: null,
           ExamId: this.examId,
           Exam: null,
+          ExamType: this.checkExamType(),
           Score: 10,
-          TimeTaken: '00:39:59',
+          TimeTaken: `0${this.hourCountdown} : ${this.minsCountdown} : ${this.secondsCountdown}`,
           SelectedAnswers: this.selectedAnswers.filter(
             x => x.SelectedAnswer !== ''
           ),
@@ -217,32 +304,66 @@ export class ExamViewComponent implements OnInit {
           .createExamRecord(this.examRecord)
           .subscribe(response => {
             if (response.Success) {
+              console.log(this.examRecord.TimeTaken);
               this.router.navigateByUrl('examrecordview/' + response.Data.Id);
             }
           });
+      } else {
+        this.startTimer();
       }
     });
   }
 
   back() {
+    // Conditional statements to check user's role, to know which page to route BACK to
     if (this.isStudent === false) {
       this.router.navigateByUrl('exams');
     } else if (this.previousPage === 'examhard') {
-      this.router.navigateByUrl(this.previousPage);
-    } else {
+      clearInterval(this.interval);
 
-      // Compare selected answers with currentExamRecord.SelectedAnswers before displaying modal
+      Swal.fire({
+        title: 'Confirm',
+        text: 'Are you sure you wan\'t to discard your answers??',
+        type: 'warning',
+        showConfirmButton: true,
+        showCancelButton: true,
+        confirmButtonColor: '#40844e',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Discard',
+        cancelButtonText: 'Cancel'
+      }).then(result => {
+        if (result.value) {
+          this.router.navigateByUrl(this.previousPage);
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
+          this.startTimer();
+        }
+      });
+    } else {
+      // On exam practice page, check if user wants to save their answers
+
+      // If user is continuing an exam, compare selected answers with
+      // currentExamRecord.SelectedAnswersto know if user made any
+      // changes before displaying modal
       let counter = 0;
-      for (let i = 0; i < this.currentExamRecord.SelectedAnswers.length; i++) {
-        if (
-          this.currentExamRecord.SelectedAnswers[i].SelectedAnswer ===
-          this.selectedAnswers[i].SelectedAnswer
+      if (this.examState !== 'start') {
+        // Only execute if exam state is 'resume'
+        for (
+          let i = 0;
+          i < this.currentExamRecord.SelectedAnswers.length;
+          i++
         ) {
-          counter++;
+          if (
+            this.currentExamRecord.SelectedAnswers[i].SelectedAnswer ===
+            this.selectedAnswers[i].SelectedAnswer
+          ) {
+            counter++;
+          }
         }
       }
-
-      if (this.numberOfQuestionsAnswered() > 0 && counter !== this.numberOfQuestionsAnswered()) {
+      if (
+        this.numberOfQuestionsAnswered() > 0 &&
+        counter !== this.numberOfQuestionsAnswered()
+      ) {
         Swal.fire({
           title: 'Confirm',
           text: 'Do you want to save your answers for later?',
@@ -262,6 +383,7 @@ export class ExamViewComponent implements OnInit {
               User: null,
               ExamId: this.examId,
               Exam: null,
+              ExamType: this.checkExamType(),
               Score: 10,
               TimeTaken: '00:39:59',
               SelectedAnswers: this.selectedAnswers.filter(

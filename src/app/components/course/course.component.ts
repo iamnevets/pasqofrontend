@@ -16,7 +16,7 @@ export class CourseComponent implements OnInit {
   faEdit = faEdit;
   faTrashAlt = faTrashAlt;
 
-  courses: Course[];
+  courses: Course[] = [];
   courseFilter: any = {
     Id: null,
     Name: '',

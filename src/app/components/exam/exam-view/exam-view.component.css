@@ -1,6 +1,7 @@
 .main-exam-container {
     width: 90%;
     margin: auto;
+    margin-top: 50px !important;
 }
 
 fa-icon {
@@ -109,6 +110,17 @@ fa-icon {
     left: 4px;
 }
 
+.correct-answer {
+    height: 150px;
+    background-color: #fff;
+    color: #7c7c7c;
+    font-size: 1.2rem;
+    font-weight: 500;
+    padding: 20px;
+    border-radius: 5px;
+    transition: 2s ease-out;
+}
+
 .back-btn {
     width: 130px;
     height: 50px;
@@ -126,4 +138,19 @@ fa-icon {
 .back-btn:hover {
     background-color: #7c3d70;
     transition: 0.2s ease-out;
+}
+
+.timer-countdown {
+    float: right;
+    height: 70px;
+    width: 15%;
+    margin-right: 5%;
+    margin-top: 10px;
+    padding-top: 10px;
+    background-color: #E12F5C;
+    color: white;
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 5px;
 }

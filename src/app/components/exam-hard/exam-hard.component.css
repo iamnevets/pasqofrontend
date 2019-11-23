@@ -5,6 +5,10 @@
   column-gap: 5%;
 }
 
+.table {
+  border: 3px solid transparent;
+}
+
 .exams-container {
   position: relative;
   height: 380px;
@@ -37,6 +41,42 @@
 .exams-container .btn-save:hover {
   background-color: #7a386e !important;
 }
+.exams-container .time-picker {
+  float: right;
+  width: 43%;
+  height: 70px;
+  margin-right: 10%;
+  padding: 10px;
+  padding-left: 40px;
+  font-size: 1.4rem;
+  font-weight: 600;
+  background-color: #40844e;
+  color: white;
+  border-radius: 5px;
+  /* border: 1px solid black; */
+}
+.exams-container .time-picker select {
+  width: 35%;
+  height: 55%;
+  margin-top: 4%;
+  margin-left: 10px;
+  color: white;
+  background-color: transparent;
+  border-top: transparent;
+  border-right: transparent;
+  border-left: transparent;
+  border-bottom: transparent;
+}
+.exams-container .time-picker select option {
+  background-color: #fff;
+  color: #575757;
+  text-align: center;
+}
+/* .exams-container .time-picker .timer-hour {
+  width: 40%;
+  height: 50%;
+  margin-top: 5%;
+} */
 
 .exams-container:hover {
   background-color: #f1ffeb;
@@ -49,9 +89,13 @@
   left: 83%;
   width: 140px;
   height: 80.83px;
-  background-color: #979797;
+  background-color: #e22b59f8;
+  color: white;
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: 500;
   margin: 40.41px 0;
-  border-radius: 10px;
+  border-radius: 5px;
   box-shadow: 0 0 40px rgba(0, 0, 0, 0.3);
 }
 
@@ -89,4 +133,7 @@
   height: 80.829px;
   z-index: 2;
   background: inherit;
+
+  padding-top: 10px;
+  border-radius: 10px;
 }

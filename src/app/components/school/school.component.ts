@@ -15,7 +15,7 @@ export class SchoolComponent implements OnInit {
   faEdit = faEdit;
   faTrashAlt = faTrashAlt;
 
-  schools: School[];
+  schools: School[] = [];
   schoolFilter: School = {
     Id: null,
     Name: '',

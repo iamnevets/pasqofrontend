@@ -34,8 +34,11 @@ export class ExamHardComponent implements OnInit {
 
   faClock = faClock;
 
-  constructor(private router: Router, private examService: ExamService, private examRecordsService: ExamRecordsService) {
-  }
+  constructor(
+    private router: Router,
+    private examService: ExamService,
+    private examRecordsService: ExamRecordsService
+  ) {}
 
   ngOnInit() {
     this.getAllExams();
@@ -59,10 +62,36 @@ export class ExamHardComponent implements OnInit {
     this.examRecordsService.getAllExamRecords(userId).subscribe(response => {
       if (response.Success) {
         const allExamRecords: ExamRecord[] = response.Data;
-        this.examRecords = allExamRecords.filter(x => x.ExamType === 'examination');
+        this.examRecords = allExamRecords.filter(
+          x => x.ExamType === 'examination'
+        );
         localStorage.setItem('examrecords', JSON.stringify(response.Data));
       }
     });
+  }
+
+  getBestScore(id: number) {
+    const allExamRecordsForCurrentExam: ExamRecord[] = this.examRecords.filter(
+      x => x.ExamId === id
+    );
+    let currentBestScore = 0;
+    allExamRecordsForCurrentExam.forEach(record => {
+      if (record.Score > currentBestScore) {
+        currentBestScore = record.Score;
+      }
+    });
+
+    return currentBestScore;
+  }
+  getNumberOfAttempts(id: number) {
+    const allExamRecordsForCurrentExam: ExamRecord[] = this.examRecords.filter(
+      x => x.ExamId === id
+    );
+
+    return allExamRecordsForCurrentExam.length;
+  }
+  getTotalNumberOfQuestions(id: number) {
+    return this.exams.find(x => x.Id === id).numOfQuestions;
   }
 
   getBestTime(id: number) {
@@ -82,13 +111,14 @@ export class ExamHardComponent implements OnInit {
     this.minsCountdown = val;
   }
   practice(id: number, examState = '') {
-
-    this.router.navigate(['/examview/' + id,
-    { previous: 'examhard',
-      examState,
-      hourCountdown: this.hourCountdown,
-      minsCountdown: this.minsCountdown
-    }]);
+    this.router.navigate([
+      '/examview/' + id,
+      {
+        previous: 'examhard',
+        examState,
+        hourCountdown: this.hourCountdown,
+        minsCountdown: this.minsCountdown
+      }
+    ]);
   }
-
 }

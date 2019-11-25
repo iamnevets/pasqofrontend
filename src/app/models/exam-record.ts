@@ -13,4 +13,5 @@ export interface ExamRecord {
     TimeTaken: string;
     SelectedAnswers: SelectedAnswer[];
     NumberOfQuestionsAnswered: number;
+    TotalNumberOfQuestions: number;
 }

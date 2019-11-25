@@ -92,6 +92,7 @@ export class AppComponent implements OnInit {
   }
 
   dashboard() {
+    this.currentPageIsExams = '';
     this.currentPageIsPractice = '';
     this.currentPageIsExamination = '';
     this.currentPageIsFlashQuiz = '';

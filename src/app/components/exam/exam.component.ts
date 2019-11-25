@@ -13,6 +13,7 @@ import { User } from 'src/app/models/user';
 })
 export class ExamComponent implements OnInit {
   isStudent = false;
+  isRootAdmin = false;
 
   faEye = faEye;
   faEdit = faEdit;
@@ -38,6 +39,9 @@ export class ExamComponent implements OnInit {
     const currentUser: User = JSON.parse(localStorage.getItem('user'));
     if (currentUser.UserRole.Name === 'Student') {
       this.isStudent = true;
+    }
+    if (currentUser.Name === 'Administrator') {
+      this.isRootAdmin = true;
     }
 
     this.getAllExams();

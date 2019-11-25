@@ -42,7 +42,8 @@
                 aria-valuemin="0" aria-valuemax="100"></div>
         </div>
         <br>
-        <p class="progress-description">Your best score after 0 attempts.</p>
+        <p class="progress-description">Your best score after {{getNumberOfAttempts(exam.Id)}} attempts:
+            {{getBestScore(exam.Id)}}/{{getTotalNumberOfQuestions(exam.Id)}}</p>
         <br>
         <button class="btn btn-save" (click)="practice(exam.Id, 'start')">START</button>
         <span class="time-picker">

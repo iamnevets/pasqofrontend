@@ -157,7 +157,7 @@ export class ExamViewComponent implements OnInit {
     }
   }
 
-  // A click-event function to set correct answer
+  // A click-event function to set and show/hide correct answer
   showAnswer(questionId: number) {
     // tslint:disable-next-line: prefer-for-of
     for (let i = 0; i < this.questions.length; i++) {
@@ -271,6 +271,21 @@ export class ExamViewComponent implements OnInit {
     return count;
   }
 
+  // Function to set score by evaluating selected answers
+  evaluateAnswers() {
+    const selectedAnswers: SelectedAnswer[] = this.selectedAnswers.filter(x => x.SelectedAnswer !== '');
+    let score = 0;
+    for (let i = 0; i < selectedAnswers.length; i++) {
+      if (
+        this.questions[i].Id === selectedAnswers[i].QuestionId &&
+        this.questions[i].CorrectAnswer === this.selectedAnswers[i].SelectedAnswer
+      ) {
+        score++;
+      }
+    }
+    return score;
+  }
+
   submit() {
     clearInterval(this.interval);
     // modal to make sure user is certain they want to submit their answers
@@ -292,12 +307,13 @@ export class ExamViewComponent implements OnInit {
           ExamId: this.examId,
           Exam: null,
           ExamType: this.checkExamType(),
-          Score: 10,
+          Score: this.evaluateAnswers(),
           TimeTaken: `0${this.hourCountdown} : ${this.minsCountdown} : ${this.secondsCountdown}`,
           SelectedAnswers: this.selectedAnswers.filter(
             x => x.SelectedAnswer !== ''
           ),
-          NumberOfQuestionsAnswered: this.numberOfQuestionsAnswered()
+          NumberOfQuestionsAnswered: this.numberOfQuestionsAnswered(),
+          TotalNumberOfQuestions: this.questionsLength
         };
 
         this.examRecordsService
@@ -384,12 +400,13 @@ export class ExamViewComponent implements OnInit {
               ExamId: this.examId,
               Exam: null,
               ExamType: this.checkExamType(),
-              Score: 10,
+              Score: 0,
               TimeTaken: '00:39:59',
               SelectedAnswers: this.selectedAnswers.filter(
                 x => x.SelectedAnswer !== ''
               ),
-              NumberOfQuestionsAnswered: this.numberOfQuestionsAnswered()
+              NumberOfQuestionsAnswered: this.numberOfQuestionsAnswered(),
+              TotalNumberOfQuestions: this.questionsLength
             };
 
             this.examRecordsService

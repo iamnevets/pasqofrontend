@@ -18,7 +18,7 @@
                         <input type="text" size="25" class="search-by" placeholder="Filter by title"
                             [(ngModel)]="examFilter.Title">
                     </th>
-                    <th>
+                    <th *ngIf="isRootAdmin">
                         <input type="text" size="30" class="search-by" placeholder="Filter by school"
                             [(ngModel)]="examFilter.School.Name">
                     </th>
@@ -41,7 +41,7 @@
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Title</th>
-                        <th scope="col">School</th>
+                        <th scope="col" *ngIf="isRootAdmin">School</th>
                         <th scope="col">Programme</th>
                         <th scope="col">Course</th>
                         <th scope="col" width="100px" class="actions">Year</th>
@@ -53,7 +53,7 @@
                         *ngFor="let exam of exams | filterBy: examFilter | paginate: {itemsPerPage: 10, currentPage: pageNumber} let i=index;">
                         <td> {{ i+1 }} </td>
                         <td> {{ exam.Title }} </td>
-                        <td> {{ exam.School?.Name }} </td>
+                        <td *ngIf="isRootAdmin"> {{ exam.School?.Name }} </td>
                         <td> {{ exam.Programme?.Name }} </td>
                         <td> {{ exam.Course?.Name }} </td>
                         <td class="actions"> {{ exam.Year | date }} </td>

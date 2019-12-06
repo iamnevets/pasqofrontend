@@ -32,12 +32,12 @@
           <fa-icon [icon]="faGraduationCap" [fixedWidth]="true"></fa-icon>
           <li>PROGRAMMES</li>
         </a>
-        <a routerLink="schools" id="nav-link" *ngIf="!isUserStudent() && isRootAdmin" attr.aria-current="{{currentPageIsSchools}}"
+        <a routerLink="schools" id="nav-link" *ngIf="isRootAdmin" attr.aria-current="{{currentPageIsSchools}}"
           (click)="onClickSchools()">
           <fa-icon [icon]="faUniversity" [fixedWidth]="true"></fa-icon>
           <li>SCHOOLS</li>
         </a>
-          <a routerLink="users" id="nav-link" *ngIf="!isUserStudent() && isRootAdmin" attr.aria-current="{{currentPageIsUsers}}"
+        <a routerLink="users" id="nav-link" *ngIf="isRootAdmin" attr.aria-current="{{currentPageIsUsers}}"
           (click)="onClickUsers()">
           <fa-icon [icon]="faUsers" [fixedWidth]="true"></fa-icon>
           <li>USERS</li>
@@ -57,6 +57,11 @@
           <fa-icon [icon]="faGamepad" [fixedWidth]="true"></fa-icon>
           <li>FLASH-QUIZ</li>
         </a>
+        <a routerLink="messages" id="nav-link" *ngIf="isRootAdmin" attr.aria-current="{{currentPageIsMessages}}"
+          (click)="onClickMessages()">
+          <fa-icon [icon]="faComment" [fixedWidth]="true"></fa-icon>
+          <li>MESSAGES</li>
+        </a>
         <a routerLink="profile" id="nav-link" attr.aria-current="{{currentPageIsProfile}}" (click)="onClickProfile()">
           <fa-icon [icon]="faUser" [fixedWidth]="true"></fa-icon>
           <li>PROFILE</li>
@@ -67,8 +72,8 @@
         <br *ngIf="isUserStudent() || !isRootAdmin">
         <br *ngIf="!isUserStudent() && !isRootAdmin">
         <br *ngIf="!isUserStudent() && !isRootAdmin">
-        <br>
-        <br>
+        <br *ngIf="!isRootAdmin">
+        <br *ngIf="!isRootAdmin">
         <a (click)="logout()" id="nav-link" style="cursor: pointer;">
           <fa-icon [icon]="faSignOutAlt" [rotate]="180" [fixedWidth]="true" style="color: #f2395a; font-size: 1.1em;">
           </fa-icon>

@@ -26,6 +26,8 @@ import { ExamHardComponent } from './components/exam-hard/exam-hard.component';
 import { FlashQuizComponent } from './components/flash-quiz/flash-quiz.component';
 import { ExamRecordsComponent } from './components/exam-records/exam-records.component';
 import { ExamRecordViewComponent } from './components/exam-records/exam-record-view/exam-record-view.component';
+import { MessagesComponent } from './components/messages/messages.component';
+import { ReadMessageComponent } from './components/messages/read-message/read-message.component';
 
 const routes: Routes = [
   { path: 'home', component: HomePageComponent },
@@ -47,6 +49,8 @@ const routes: Routes = [
   { path: 'courses', component: CourseComponent, canActivate: [AuthGuardService]},
   { path: 'courseform', component: CourseFormComponent, canActivate: [AuthGuardService]},
   { path: 'courseform/:id', component: CourseFormComponent, canActivate: [AuthGuardService]},
+  { path: 'messages', component: MessagesComponent, canActivate: [AuthGuardService]},
+  { path: 'readmessage/:id', component: ReadMessageComponent, canActivate: [AuthGuardService]},
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuardService]},
   { path: 'exams', component: ExamComponent, canActivate: [AuthGuardService]},
   { path: 'examform', component: ExamFormComponent, canActivate: [AuthGuardService]},

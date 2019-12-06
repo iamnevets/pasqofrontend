@@ -7,4 +7,5 @@ export interface ContactUs {
     SchoolId: number;
     School: School;
     Message: string;
+    Date: Date;
 }

@@ -39,6 +39,8 @@ import { LoadingScreenComponent } from './components/loading-screen/loading-scre
 import { RouterModule } from '@angular/router';
 import { ExamRecordsComponent } from './components/exam-records/exam-records.component';
 import { ExamRecordViewComponent } from './components/exam-records/exam-record-view/exam-record-view.component';
+import { MessagesComponent } from './components/messages/messages.component';
+import { ReadMessageComponent } from './components/messages/read-message/read-message.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +70,9 @@ import { ExamRecordViewComponent } from './components/exam-records/exam-record-v
     FlashQuizComponent,
     LoadingScreenComponent,
     ExamRecordsComponent,
-    ExamRecordViewComponent
+    ExamRecordViewComponent,
+    MessagesComponent,
+    ReadMessageComponent
   ],
   imports: [
     BrowserModule,

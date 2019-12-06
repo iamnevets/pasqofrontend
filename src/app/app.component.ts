@@ -13,7 +13,10 @@ import {
   faClock,
   faGamepad,
   faChartBar,
-  faSmileWink
+  faSmileWink,
+  faEnvelope,
+  faComment,
+  faCommentAlt
 } from '@fortawesome/free-solid-svg-icons';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -46,6 +49,7 @@ export class AppComponent implements OnInit {
   currentPageIsProgrammes: string;
   currentPageIsSchools: string;
   currentPageIsUsers: string;
+  currentPageIsMessages: string;
   currentPageIsProfile: string;
   currentPageIsPractice: string;
   currentPageIsExamination: string;
@@ -64,6 +68,7 @@ export class AppComponent implements OnInit {
   faGamepad = faGamepad;
   faSmileWink = faSmileWink;
   faSignOutAlt = faSignOutAlt;
+  faComment = faComment;
 
   constructor(
     private userService: UserService,
@@ -96,6 +101,7 @@ export class AppComponent implements OnInit {
     this.currentPageIsPractice = '';
     this.currentPageIsExamination = '';
     this.currentPageIsFlashQuiz = '';
+    this.currentPageIsMessages = '';
     this.currentPageIsProfile = '';
     this.currentPageIsDashboard = 'page';
 
@@ -215,6 +221,7 @@ export class AppComponent implements OnInit {
     this.currentPageIsPractice = '';
     this.currentPageIsExamination = '';
     this.currentPageIsFlashQuiz = '';
+    this.currentPageIsMessages = '';
     this.currentPageIsProfile = '';
   }
 
@@ -225,6 +232,7 @@ export class AppComponent implements OnInit {
     this.currentPageIsProgrammes = '';
     this.currentPageIsSchools = '';
     this.currentPageIsUsers = '';
+    this.currentPageIsMessages = '';
     this.currentPageIsProfile = '';
   }
 
@@ -235,6 +243,7 @@ export class AppComponent implements OnInit {
     this.currentPageIsProgrammes = 'page';
     this.currentPageIsSchools = '';
     this.currentPageIsUsers = '';
+    this.currentPageIsMessages = '';
     this.currentPageIsProfile = '';
   }
 
@@ -245,6 +254,7 @@ export class AppComponent implements OnInit {
     this.currentPageIsProgrammes = '';
     this.currentPageIsSchools = 'page';
     this.currentPageIsUsers = '';
+    this.currentPageIsMessages = '';
     this.currentPageIsProfile = '';
   }
 
@@ -255,6 +265,21 @@ export class AppComponent implements OnInit {
     this.currentPageIsProgrammes = '';
     this.currentPageIsSchools = '';
     this.currentPageIsUsers = 'page';
+    this.currentPageIsMessages = '';
+    this.currentPageIsProfile = '';
+  }
+
+  onClickMessages() {
+    this.currentPageIsDashboard = '';
+    this.currentPageIsExams = '';
+    this.currentPageIsCourses = '';
+    this.currentPageIsProgrammes = '';
+    this.currentPageIsSchools = '';
+    this.currentPageIsUsers = '';
+    this.currentPageIsPractice = '';
+    this.currentPageIsExamination = '';
+    this.currentPageIsFlashQuiz = '';
+    this.currentPageIsMessages = 'page';
     this.currentPageIsProfile = '';
   }
 
@@ -268,6 +293,7 @@ export class AppComponent implements OnInit {
     this.currentPageIsPractice = '';
     this.currentPageIsExamination = '';
     this.currentPageIsFlashQuiz = '';
+    this.currentPageIsMessages = '';
     this.currentPageIsProfile = 'page';
   }
 

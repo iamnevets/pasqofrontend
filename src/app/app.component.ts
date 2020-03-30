@@ -102,6 +102,10 @@ export class AppComponent implements OnInit {
     this.currentPageIsExamination = '';
     this.currentPageIsFlashQuiz = '';
     this.currentPageIsMessages = '';
+    this.currentPageIsCourses = '';
+    this.currentPageIsUsers = '';
+    this.currentPageIsProgrammes = '';
+    this.currentPageIsSchools = '';
     this.currentPageIsProfile = '';
     this.currentPageIsDashboard = 'page';
 

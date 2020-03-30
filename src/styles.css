@@ -74,6 +74,10 @@
     /* border: 1px black solid; */
 }
 
+input{
+    outline: none !important;
+}
+
 .main-content .my-table-container table {
     width: 100%;
     margin: auto;

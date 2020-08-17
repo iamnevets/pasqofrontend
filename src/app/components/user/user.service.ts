@@ -11,7 +11,7 @@ export class UserService {
 
   constructor(private http: HttpClient) {
     const currentUser: User = JSON.parse(localStorage.getItem('user'));
-    if (currentUser.UserRole.Name === 'Student') {
+    if (currentUser && currentUser.UserRole.Name === 'Student') {
       this.isStudent = true;
     }
 
